@@ -472,7 +472,7 @@
           <div class="msg-title">App Download / Update Instructions</div>
           <div class="msg-meta">
             <span class="tag tag-date">~Apr 7 (morning)</span>
-            <span class="tag tag-channel">WhatsApp + SMS</span>
+            <span class="tag tag-channel">WA + SMS + Old App</span>
             <span class="tag tag-format">Text + Deep link</span>
             <span class="tag tag-action">Download / Update app</span>
           </div>
@@ -482,11 +482,11 @@
       <div class="msg-detail">
         <div class="detail-grid">
           <div>
-            <div class="detail-section"><div class="detail-label">Intent</div><div class="detail-text">Get new app on the partner's phone. This is the prerequisite for everything else. Must be crystal clear: one link to click.</div></div>
+            <div class="detail-section"><div class="detail-label">Intent</div><div class="detail-text">Get new app on the partner's phone. This is the prerequisite for everything else. Must be crystal clear: one link to click. Old app also shows a full-screen redirect card.</div></div>
             <div class="detail-section"><div class="detail-label">Open Question</div><div class="detail-text" style="color:#E65100;">Is this an update to the existing app or a new download? Determines the instruction. Placeholder content below.</div></div>
           </div>
           <div>
-            <div class="detail-label">WhatsApp Preview</div>
+            <div class="detail-label">Channel 1: WhatsApp</div>
             <div class="wa-preview">
               <div class="wa-bubble">
                 <div class="wa-title">Wiom — New App Ready</div>
@@ -499,10 +499,23 @@
                 <div class="wa-time">8:00 AM ✓✓</div>
               </div>
             </div>
-            <div class="channel-sep">SMS Backup</div>
+            <div class="channel-sep">Channel 2: SMS</div>
             <div class="sms-preview">
               <div class="sms-label">SMS</div>
               <div class="sms-bubble">Wiom: Naya App ready hai. Download/update karein: [Play Store link]. Purana app delete karein.</div>
+            </div>
+            <div class="channel-sep">Channel 3: Old App (redirect screen)</div>
+            <div class="app-preview" style="margin-top:6px;">
+              <div class="app-phone-frame">
+                <div class="app-status-bar"><span>Wiom App</span><span>Old</span></div>
+                <div class="app-card-body" style="text-align:center; padding:24px 16px;">
+                  <div style="font-size:40px; margin-bottom:12px;">&#x1F195;</div>
+                  <h4 style="font-size:16px;">नया Wiom App आ गया है</h4>
+                  <p style="margin-top:8px; color:#666;">यह app अब बंद हो रहा है। नया App download करें — आपकी सारी information वहाँ है।</p>
+                  <div style="margin-top:16px; background:#D9008D; color:#fff; text-align:center; padding:12px; border-radius:8px; font-weight:600; font-size:14px;">नया App Download करें &#x2192;</div>
+                  <p style="margin-top:10px; font-size:11px; color:#999;">यह screen बंद नहीं होगी। पुराना app अब काम नहीं करेगा।</p>
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -517,9 +530,9 @@
           <div class="msg-title">D0 — App is Live, Your State is Ready</div>
           <div class="msg-meta">
             <span class="tag tag-date">~Apr 7</span>
-            <span class="tag tag-channel">WhatsApp</span>
-            <span class="tag tag-format">Text + App deep link</span>
-            <span class="tag tag-action">Open app</span>
+            <span class="tag tag-channel">WA + Old App (blocked)</span>
+            <span class="tag tag-format">Text + Deep link + Redirect</span>
+            <span class="tag tag-action">Open new app</span>
           </div>
         </div>
         <div class="msg-expand-icon">&#9662;</div>
@@ -527,12 +540,13 @@
       <div class="msg-detail">
         <div class="detail-grid">
           <div>
-            <div class="detail-section"><div class="detail-label">Intent</div><div class="detail-text">Get partner to open the app and see their state. Job is ONLY to drive app opens — not explain the system. Tickets (service + installation) will drive daily returns.</div></div>
+            <div class="detail-section"><div class="detail-label">Intent</div><div class="detail-text">Get partner to open the new app and see their state. Old app is now blocked — opening it shows a redirect screen to the new app. This ensures no partner stays on the old app.</div></div>
             <div class="detail-section"><div class="detail-label">App Screen Required</div><div class="app-screen-tag">Dashboard: state, ₹300 rate, pending tickets, Trust Line</div></div>
+            <div class="detail-section"><div class="detail-label">Old App Behaviour</div><div class="detail-text">Old app is <strong>blocked from this point</strong>. Any partner who opens it sees only a full-screen redirect to download/open the new app. No old app functionality remains.</div></div>
           </div>
           <div>
-            <div class="detail-label">WhatsApp Preview</div>
-            <div class="wa-preview">
+            <div class="detail-label">Channel 1: WhatsApp</div>
+            <div class="wa-preview" style="margin-bottom:10px;">
               <div class="wa-bubble">
                 नया Wiom App अब <strong>live</strong> है।<br><br>
                 आपकी state, pending tickets, और अगले steps App में दिख रहे हैं।<br><br>
@@ -540,6 +554,19 @@
                 किसी भी सवाल के लिए Trust Line: <strong>[number]</strong>
                 <div class="wa-cta">&#128279; Wiom App खोलें</div>
                 <div class="wa-time">10:00 AM ✓✓</div>
+              </div>
+            </div>
+            <div class="channel-sep">Channel 2: Old App (blocked + redirect)</div>
+            <div class="app-preview" style="margin-top:6px;">
+              <div class="app-phone-frame">
+                <div class="app-status-bar" style="background:#555;"><span>Wiom App</span><span style="color:#ff6b6b;">Blocked</span></div>
+                <div class="app-card-body" style="text-align:center; padding:24px 16px; background:#F5F5F7;">
+                  <div style="font-size:40px; margin-bottom:12px;">&#x1F6AB;</div>
+                  <h4 style="font-size:16px;">यह App अब बंद है</h4>
+                  <p style="margin-top:8px; color:#666;">आपका पूरा data — tickets, earnings, devices — नए Wiom App में है।</p>
+                  <div style="margin-top:16px; background:#D9008D; color:#fff; text-align:center; padding:12px; border-radius:8px; font-weight:600; font-size:14px;">नया Wiom App खोलें &#x2192;</div>
+                  <p style="margin-top:10px; font-size:11px; color:#999;">Trust Line: [number]</p>
+                </div>
               </div>
             </div>
           </div>
@@ -891,6 +918,117 @@
                     <span style="font-size:12px; color:#2E7D32; font-weight:600;">&#x2714; अच्छा कर रहे हैं!</span>
                   </div>
                   <p style="font-size:12px; line-height:1.7;">&#x2B50; Connections stable<br>&#x2B50; Issues time पर resolve<br>&#x2B50; Projected tier: Very Good</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ========== ALWAYS-ON: WIOM PAATHSHALA ========== -->
+    <div class="phase-header" data-phase="post">
+      <div class="phase-dot" style="background:#7B1FA2"></div>
+      <h2>Always-On — Wiom Paathshala</h2><span class="date-range">Permanent in App</span>
+      <div class="phase-line"></div>
+    </div>
+
+    <div class="msg-card phase-post" data-phase="post" style="border-left: 4px solid #7B1FA2;">
+      <div class="msg-card-top" onclick="toggleCard(this)">
+        <div class="msg-num" style="background:#7B1FA2;">&#x221E;</div>
+        <div class="msg-info">
+          <div class="msg-title">Wiom Paathshala — All Education Lives Here</div>
+          <div class="msg-meta">
+            <span class="tag tag-date">Always available</span>
+            <span class="tag tag-channel">New App — Settings / Help</span>
+            <span class="tag tag-paathshala">Permanent home for all content</span>
+          </div>
+        </div>
+        <div class="msg-expand-icon">&#9662;</div>
+      </div>
+      <div class="msg-detail">
+        <div class="detail-grid">
+          <div>
+            <div class="detail-section"><div class="detail-label">Why this matters</div><div class="detail-text">Every temporary card, pop-up, and nudge in this plan eventually disappears. But the partner may need that information 2 weeks later, or a month later, or when onboarding a new team member. <strong>All education content must have a permanent home</strong> — and the partner must know where to find it.</div></div>
+            <div class="detail-section"><div class="detail-label">What lives here</div><div class="detail-text">
+              <strong>1. System Reboot + PayG Video</strong> — the full explainer video from Msg 04, re-watchable anytime<br><br>
+              <strong>2. Quiz Modules</strong> — partner can retake quizzes or new partners can complete them<br><br>
+              <strong>3. Performance Guide</strong> — DOs/DON'Ts, what helps/hurts quality score, how bonus is calculated<br><br>
+              <strong>4. Device Management Guide</strong> — carry fee policy, how to return devices, idle device rules<br><br>
+              <strong>5. PayG Explainer</strong> — how customer PayG plans work from partner's perspective</div>
+            </div>
+            <div class="detail-section"><div class="detail-label">What does NOT live here (separate section)</div><div class="detail-text"><strong>Rate Card</strong> — this is too important for a sub-section. Lives in a dedicated <strong>Earnings</strong> tab, always one tap away from the dashboard. Not buried in settings.</div></div>
+            <div class="detail-section"><div class="detail-label">How it connects to the comms plan</div><div class="detail-text">Every message in this plan that shows a temporary card (7-day rate card, one-time quiz, contextual score tips) should include a note: <em>"Yeh information kabhi bhi dekhne ke liye: Settings > Wiom Paathshala"</em>. This trains the partner to self-serve.</div></div>
+          </div>
+          <div>
+            <div class="detail-label">What Partner Sees in App</div>
+            <div class="app-preview">
+              <div class="app-phone-frame">
+                <div class="app-status-bar"><span>Wiom</span><span>Paathshala</span></div>
+                <div class="app-card-body">
+                  <h4>&#x1F393; Wiom Paathshala</h4>
+                  <p style="font-size:11px; color:#888; margin-bottom:12px;">सब कुछ समझें — अपनी speed से</p>
+
+                  <div style="background:#F3E8FF; padding:12px; border-radius:10px; margin-bottom:10px; display:flex; align-items:center; gap:10px;">
+                    <div style="font-size:24px;">&#127909;</div>
+                    <div>
+                      <div style="font-size:13px; font-weight:700;">नया System + PayG</div>
+                      <div style="font-size:11px; color:#666;">Video — 2:30 min</div>
+                    </div>
+                    <span style="margin-left:auto; color:#D9008D; font-weight:700; font-size:12px;">&#x25B6;</span>
+                  </div>
+
+                  <div style="background:#E0F7FA; padding:12px; border-radius:10px; margin-bottom:10px; display:flex; align-items:center; gap:10px;">
+                    <div style="font-size:24px;">&#x1F4DD;</div>
+                    <div>
+                      <div style="font-size:13px; font-weight:700;">Quiz — क्या समझा?</div>
+                      <div style="font-size:11px; color:#666;">&#x2714; Completed</div>
+                    </div>
+                    <span style="margin-left:auto; color:#2E7D32; font-weight:700; font-size:12px;">Done</span>
+                  </div>
+
+                  <div style="background:#FFF3E0; padding:12px; border-radius:10px; margin-bottom:10px; display:flex; align-items:center; gap:10px;">
+                    <div style="font-size:24px;">&#x1F4C8;</div>
+                    <div>
+                      <div style="font-size:13px; font-weight:700;">Performance Guide</div>
+                      <div style="font-size:11px; color:#666;">Bonus, score, DOs/DON'Ts</div>
+                    </div>
+                    <span style="margin-left:auto; color:#D9008D; font-weight:700; font-size:12px;">&#x2192;</span>
+                  </div>
+
+                  <div style="background:#E8F5E9; padding:12px; border-radius:10px; margin-bottom:10px; display:flex; align-items:center; gap:10px;">
+                    <div style="font-size:24px;">&#x1F4E6;</div>
+                    <div>
+                      <div style="font-size:13px; font-weight:700;">Device Management</div>
+                      <div style="font-size:11px; color:#666;">Carry fee, returns, idle rules</div>
+                    </div>
+                    <span style="margin-left:auto; color:#D9008D; font-weight:700; font-size:12px;">&#x2192;</span>
+                  </div>
+
+                  <div style="background:#FCE4EC; padding:12px; border-radius:10px; display:flex; align-items:center; gap:10px;">
+                    <div style="font-size:24px;">&#x1F4B3;</div>
+                    <div>
+                      <div style="font-size:13px; font-weight:700;">PayG कैसे काम करता है</div>
+                      <div style="font-size:11px; color:#666;">Customer plans, recharge, billing</div>
+                    </div>
+                    <span style="margin-left:auto; color:#D9008D; font-weight:700; font-size:12px;">&#x2192;</span>
+                  </div>
+
+                </div>
+              </div>
+            </div>
+            <div style="margin-top:12px;">
+              <div class="detail-label">Separate: Earnings Section</div>
+              <div class="app-preview">
+                <div class="app-phone-frame">
+                  <div class="app-status-bar"><span>Wiom</span><span>Earnings</span></div>
+                  <div class="app-card-body">
+                    <h4>&#x1F4B0; Earnings</h4>
+                    <div class="rate-row"><span>हर connection install</span><span class="rate-amt">₹300</span></div>
+                    <div class="rate-row"><span>Performance Bonus</span><span class="rate-amt">Up to ₹120</span></div>
+                    <div class="rate-row"><span>NetBox collect</span><span class="rate-amt">₹50/device</span></div>
+                    <div style="margin-top:8px; font-size:11px; color:#888;">Full rate card, bonus tiers, and payout history — always here.</div>
+                  </div>
                 </div>
               </div>
             </div>
