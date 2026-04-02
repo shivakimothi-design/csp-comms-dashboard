@@ -3,11 +3,11 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>CSP Migration — Comms Plan v4</title>
+<title>CSP Migration — Comms Plan v5</title>
 <style>
   *{margin:0;padding:0;box-sizing:border-box}
   body{font-family:'Segoe UI',Arial,sans-serif;background:#F5F5F7;color:#1a1a1a;max-width:1020px;margin:0 auto;padding:0 20px 60px}
-  .header{background:linear-gradient(135deg,#D9008D 0%,#A0006A 100%);color:#fff;padding:32px 32px 28px;margin:0 -20px 0;border-radius:0 0 0 0}
+  .header{background:linear-gradient(135deg,#D9008D 0%,#A0006A 100%);color:#fff;padding:32px 32px 28px;margin:0 -20px 0}
   .header h1{font-size:24px;font-weight:700}.header p{font-size:13px;opacity:.8;margin-top:6px}
   h2{font-size:20px;font-weight:700;margin:32px 0 16px}
   .card{background:#fff;border-radius:14px;padding:20px 24px;margin-bottom:14px;border:1px solid #EBEBEB}
@@ -20,19 +20,14 @@
   .tbl th{background:#F5F5F7;padding:10px 14px;text-align:left;font-weight:700;font-size:12px;color:#555;border-bottom:2px solid #ddd}
   .tbl td{padding:10px 14px;border-bottom:1px solid #f0f0f0;color:#444;vertical-align:top}
   .tag{display:inline-flex;align-items:center;padding:3px 10px;border-radius:6px;font-size:11px;font-weight:600;margin:2px 4px 2px 0}
-  .tag-s0{background:#FFEBEE;color:#C62828}.tag-s1{background:#FFF3E0;color:#E65100}.tag-s2{background:#FFF9C4;color:#F57F17}.tag-s3{background:#E8F5E9;color:#2E7D32}.tag-s4{background:#E3F2FD;color:#1565C0}.tag-s5{background:#F3E8FF;color:#6A1B9A}
+  .tag-s0{background:#FFEBEE;color:#C62828}.tag-s1{background:#FFF3E0;color:#E65100}.tag-s2{background:#FFF9C4;color:#F57F17}.tag-s3{background:#E8F5E9;color:#2E7D32}.tag-s4{background:#F3E8FF;color:#6A1B9A}
   .states-flow{display:flex;gap:0;margin:20px 0;overflow-x:auto}
-  .state-box{flex:1;min-width:120px;padding:14px 10px;text-align:center;border:2px solid #EBEBEB;position:relative}
+  .state-box{flex:1;min-width:130px;padding:14px 10px;text-align:center;border:2px solid #EBEBEB;position:relative}
   .state-box:first-child{border-radius:14px 0 0 14px}.state-box:last-child{border-radius:0 14px 14px 0}
   .state-box .s-label{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.5px;margin-bottom:4px}
   .state-box .s-name{font-size:12px;font-weight:700;color:#1a1a1a}.state-box .s-desc{font-size:10px;color:#888;margin-top:4px;line-height:1.3}
-  .state-box::after{content:'→';position:absolute;right:-12px;top:50%;transform:translateY(-50%);font-size:18px;color:#ccc;z-index:1}.state-box:last-child::after{content:''}
-  .sb0{background:#FFEBEE;border-color:#FFCDD2}.sb0 .s-label{color:#C62828}
-  .sb1{background:#FFF3E0;border-color:#FFE0B2}.sb1 .s-label{color:#E65100}
-  .sb2{background:#FFF9C4;border-color:#FFF176}.sb2 .s-label{color:#F57F17}
-  .sb3{background:#E8F5E9;border-color:#C8E6C9}.sb3 .s-label{color:#2E7D32}
-  .sb4{background:#E3F2FD;border-color:#BBDEFB}.sb4 .s-label{color:#1565C0}
-  .sb5{background:#F3E8FF;border-color:#E1D5F0}.sb5 .s-label{color:#6A1B9A}
+  .state-box::after{content:'\2192';position:absolute;right:-12px;top:50%;transform:translateY(-50%);font-size:18px;color:#ccc;z-index:1}.state-box:last-child::after{content:''}
+  .sb0{background:#FFEBEE;border-color:#FFCDD2}.sb0 .s-label{color:#C62828}.sb1{background:#FFF3E0;border-color:#FFE0B2}.sb1 .s-label{color:#E65100}.sb2{background:#FFF9C4;border-color:#FFF176}.sb2 .s-label{color:#F57F17}.sb3{background:#E8F5E9;border-color:#C8E6C9}.sb3 .s-label{color:#2E7D32}.sb4{background:#F3E8FF;border-color:#E1D5F0}.sb4 .s-label{color:#6A1B9A}
   .day-card{background:#fff;border-radius:14px;margin-bottom:20px;border:1px solid #EBEBEB;overflow:hidden}
   .day-header{display:flex;align-items:center;gap:16px;padding:20px 24px;border-bottom:1px solid #f0f0f0}
   .day-num{width:56px;height:56px;border-radius:14px;display:flex;flex-direction:column;align-items:center;justify-content:center;color:#fff;font-weight:700;flex-shrink:0}
@@ -40,378 +35,253 @@
   .day-info h3{font-size:16px;font-weight:700;color:#1a1a1a}.day-info .day-sub{font-size:12px;color:#888;margin-top:2px}
   .day-body{padding:20px 24px}
   .day-grid{display:grid;grid-template-columns:1fr 340px;gap:24px}
-  @media(max-width:860px){.day-grid{grid-template-columns:1fr}.states-flow{flex-direction:column}.state-box{border-radius:10px!important}.state-box::after{content:'↓';right:auto;bottom:-14px;top:auto;left:50%;transform:translateX(-50%)}}
+  @media(max-width:860px){.day-grid{grid-template-columns:1fr}.states-flow{flex-direction:column}.state-box{border-radius:10px!important}.state-box::after{content:'\2193';right:auto;bottom:-14px;top:auto;left:50%;transform:translateX(-50%)}}
   .section-label{font-size:11px;font-weight:700;color:#999;text-transform:uppercase;letter-spacing:.5px;margin-bottom:6px}
   .logic-box{background:#F5F5F7;border-radius:10px;padding:12px 16px;margin-top:10px;font-size:12.5px;line-height:1.6;color:#666}.logic-box strong{color:#444}
-  /* Popups */
   .popup-frame{background:#fff;border-radius:14px;border:1px solid #e0e0e0;overflow:hidden;box-shadow:0 4px 24px rgba(0,0,0,.12)}
   .popup-bar{background:#D9008D;color:#fff;padding:6px 14px;font-size:11px;display:flex;justify-content:space-between;font-weight:600}
-  .popup-body{padding:16px 18px}
+  .popup-body{padding:16px 18px;position:relative}
   .popup-body h4{font-size:15px;font-weight:700;color:#1a1a1a;margin-bottom:8px}
   .popup-body p{font-size:13px;line-height:1.7;color:#444}
-  .popup-close{width:24px;height:24px;border-radius:50%;background:#f0f0f0;display:flex;align-items:center;justify-content:center;font-size:14px;color:#888;cursor:pointer;position:absolute;top:10px;right:10px}
+  .popup-close{position:absolute;top:4px;right:4px;width:24px;height:24px;border-radius:50%;background:#f0f0f0;display:flex;align-items:center;justify-content:center;font-size:14px;color:#888}
   .popup-cta{display:block;text-align:center;padding:12px;background:#D9008D;color:#fff;border-radius:10px;font-weight:600;font-size:14px;margin-top:14px}
-  .popup-dismiss{display:block;text-align:center;padding:8px;color:#999;font-size:12px;margin-top:6px}
-  .popup-wrapper{position:relative}
-  /* WA */
   .wa-preview{background:#E5DDD5;border-radius:12px;padding:14px 12px}
   .wa-bubble{background:#fff;border-radius:0 8px 8px 8px;padding:10px 14px;max-width:100%;box-shadow:0 1px 2px rgba(0,0,0,.1);font-size:13px;line-height:1.6;color:#111;position:relative}
   .wa-bubble::before{content:'';position:absolute;top:0;left:-8px;border-width:0 8px 8px 0;border-style:solid;border-color:transparent #fff transparent transparent}
   .wa-bubble .wa-time{text-align:right;font-size:10.5px;color:#999;margin-top:4px}
   .wa-cta{display:block;text-align:center;padding:10px;background:#fff;border-top:1px solid #e0e0e0;margin:8px -14px -10px;border-radius:0 0 8px 8px;color:#00A884;font-weight:600;font-size:13px}
-  .sms-preview{background:#E8F5E9;border-radius:10px;padding:12px;margin-top:10px}
-  .sms-bubble{background:#fff;border-radius:8px;padding:10px 14px;font-size:12px;line-height:1.6;color:#333;border:1px solid #C8E6C9}
-  .sms-label{font-size:10px;font-weight:700;color:#2E7D32;margin-bottom:4px;text-transform:uppercase}
-  /* Blocker */
+  .video-frame{background:#111;border-radius:12px;overflow:hidden;text-align:center;position:relative}
+  .video-frame .play-btn{width:50px;height:50px;border-radius:50%;background:rgba(217,0,141,.9);display:inline-flex;align-items:center;justify-content:center;margin:24px auto;color:#fff;font-size:22px}
+  .video-frame .v-title{color:#fff;font-size:13px;font-weight:600;padding:0 14px 4px}.video-frame .v-sub{color:#aaa;font-size:11px;padding:0 14px 16px}
+  .video-frame .v-dur{position:absolute;top:8px;right:10px;background:rgba(0,0,0,.6);color:#fff;font-size:10px;padding:2px 8px;border-radius:4px}
   .blocker-frame{background:#fff;border-radius:14px;border:2px solid #D9008D;overflow:hidden;box-shadow:0 8px 32px rgba(217,0,141,.15)}
   .blocker-bar{background:#D9008D;color:#fff;padding:10px 14px;font-size:12px;font-weight:700;text-align:center;letter-spacing:.5px}
   .blocker-body{padding:20px 18px}
   .blocker-body h4{font-size:15px;font-weight:700;margin-bottom:10px;color:#1a1a1a}
   .blocker-body p{font-size:13px;line-height:1.7;color:#444}
-  .blocker-dots{display:flex;justify-content:center;gap:6px;margin:14px 0}
-  .blocker-dots .dot{width:8px;height:8px;border-radius:50%;background:#ddd}.blocker-dots .dot.active{background:#D9008D}
-  /* Video */
-  .video-frame{background:#111;border-radius:12px;overflow:hidden;text-align:center;position:relative}
-  .video-frame .play-btn{width:50px;height:50px;border-radius:50%;background:rgba(217,0,141,.9);display:inline-flex;align-items:center;justify-content:center;margin:24px auto;color:#fff;font-size:22px}
-  .video-frame .v-title{color:#fff;font-size:13px;font-weight:600;padding:0 14px 4px}.video-frame .v-sub{color:#aaa;font-size:11px;padding:0 14px 16px}
-  .video-frame .v-dur{position:absolute;top:8px;right:10px;background:rgba(0,0,0,.6);color:#fff;font-size:10px;padding:2px 8px;border-radius:4px}
-  .channel-sep{font-size:11px;font-weight:700;color:#999;text-transform:uppercase;letter-spacing:.5px;margin:14px 0 6px;padding-top:10px;border-top:1px dashed #ddd}
+  .script-box{background:#1a1a1a;border-radius:10px;padding:16px 18px;margin-top:12px;font-size:12.5px;line-height:1.8;color:#e0e0e0}
+  .script-box .ts{color:#D9008D;font-weight:700;display:block;margin-top:10px}.script-box .ts:first-child{margin-top:0}
+  .script-box .vis{color:#888;font-style:italic}
+  .quiz-frame{background:#fff;border-radius:14px;border:1px solid #EBEBEB;overflow:hidden;margin-top:12px}
+  .quiz-bar{background:#F57F17;color:#fff;padding:8px 14px;font-size:12px;font-weight:700}
+  .quiz-body{padding:16px 18px}
+  .quiz-q{background:#F5F5F7;padding:12px 14px;border-radius:8px;margin-bottom:12px}
+  .quiz-q p{font-size:13px;font-weight:600;color:#1a1a1a;margin-bottom:8px}
+  .quiz-opt{padding:7px 12px;background:#fff;border:1px solid #ddd;border-radius:6px;margin-bottom:4px;font-size:12px;color:#444}
+  .quiz-opt.correct{background:#E8F5E9;border-color:#2E7D32;color:#2E7D32;font-weight:600}
 </style>
 </head>
 <body>
 
 <div class="header">
   <h1>CSP Migration — Communication Plan</h1>
-  <p>05/04/26 → 10/04/26 &nbsp;|&nbsp; State-based, behaviour-triggered &nbsp;|&nbsp; OWNER role only</p>
+  <p>05/04/26 → 10/04/26 &nbsp;|&nbsp; OWNER + ADMIN only &nbsp;|&nbsp; State-based</p>
 </div>
 
-<!-- ==================== OBJECTIVE ==================== -->
 <h2>Objective</h2>
 <div class="card">
-  <div class="hl-pink" style="margin-top:0;">
-    <strong>By 10/04/26 (app live):</strong> Every partner OWNER has a mental model of the new system — no surprises when they open the new app.<br>
-    <strong>By 30/04/26 (month end):</strong> Every partner trusts the system — no unexplained number, no surprise deduction, no confusion call to Trust Line.
-  </div>
+  <div class="hl-pink" style="margin-top:0;"><strong>By 10/04:</strong> हर partner OWNER/ADMIN को नया system समझ आ गया हो — new app में कोई surprise नहीं।<br><strong>By 30/04:</strong> हर partner system पर trust करे — कोई unexplained number नहीं, कोई confusion call नहीं।</div>
   <p style="margin-top:12px;"><strong>Measurable:</strong></p>
-  <ol>
-    <li><strong>100% of OWNERs</strong> complete the education blocker before 10/04</li>
-    <li><strong>>70% complete the quiz</strong> — confirmed comprehension, not just viewed</li>
-    <li><strong>Trust Line call volume</strong> does not spike in week 1 post-launch</li>
-  </ol>
+  <ol><li>100% OWNERs + ADMINs blocker complete करें (10/04 से पहले)</li><li>>70% quiz पास करें — confirmed comprehension</li><li>Trust Line call volume — week 1 में spike नहीं</li></ol>
 </div>
 
-<!-- ==================== CONSTRAINTS ==================== -->
 <h2>Constraints</h2>
 <div class="card">
   <table class="tbl" style="margin-top:0;">
-    <tr><th style="width:200px;">Constraint</th><th>Implication</th></tr>
-    <tr><td><strong>5 days only</strong></td><td>05/04 to 09/04. App goes live 10/04. Every education touchpoint must land within this window.</td></tr>
-    <tr><td><strong>Old app: static content only</strong></td><td>Popups can show text/visuals/video. Cannot show CSP-specific data (no device counts, no bonus history). Same for all 1,200 OWNERs.</td></tr>
-    <tr><td><strong>Asset/NetBox page has no data</strong></td><td>Cannot leverage this page for contextual education. NetBox education goes through other channels.</td></tr>
-    <tr><td><strong>OWNER role only</strong></td><td>~1,400-1,460 unique OWNERs open the app daily. Technicians/ADMINs excluded.</td></tr>
-    <tr><td><strong>No field support / BDO teams</strong></td><td>All education must work without human mediation.</td></tr>
-    <tr><td><strong>WA/SMS = redirect only</strong></td><td>Never carries education. Gets partner to the app where education lives.</td></tr>
+    <tr><th style="width:220px;">Constraint</th><th>Implication</th></tr>
+    <tr><td><strong>5 दिन</strong></td><td>05/04 → 09/04। App live: 10/04।</td></tr>
+    <tr><td><strong>OWNERs + ADMINs only</strong></td><td>~1,400-1,460 daily। Technicians excluded।</td></tr>
+    <tr><td><strong>Old app: static content only</strong></td><td>Popups, video, quiz — लेकिन CSP-specific data नहीं। सबके लिए same।</td></tr>
+    <tr><td><strong>Asset/NetBox page में data नहीं</strong></td><td>यह page use नहीं कर सकते। NetBox education blocker video में।</td></tr>
+    <tr><td><strong>Top 3 pages: Dashboard, Wallet, Tickets</strong></td><td>Dashboard = blocker surface (Day 2)। Wallet + Tickets = contextual (Day 1)।</td></tr>
+    <tr><td><strong>कोई field support / BDO नहीं</strong></td><td>सारी education बिना human mediation के काम करनी चाहिए।</td></tr>
+    <tr><td><strong>WA/SMS = सिर्फ redirect</strong></td><td>Education content कभी WA में नहीं। सिर्फ app खोलने के लिए।</td></tr>
   </table>
 </div>
 
-<!-- ==================== BOUNDARIES ==================== -->
-<h2>Boundaries — How We Educate</h2>
+<h2>Boundaries</h2>
 <div class="card">
   <table class="tbl" style="margin-top:0;">
-    <tr><th style="width:200px;">Boundary</th><th>Rule</th></tr>
-    <tr><td><strong>Contextual > Calendar</strong></td><td>Education lands best when partner's intent is high. Wallet popup when checking money. Ticket popup when resolving work. Not a random notification.</td></tr>
-    <tr><td><strong>Experience > Instruction</strong></td><td>Showing a partner their earning breakdown while they're in the wallet is more powerful than sending a WA explaining earning rules.</td></tr>
-    <tr><td><strong>1 blocker, rest dismissable</strong></td><td>One forced full-screen (cannot skip). All contextual popups have a close ✕. Partner is in control of depth.</td></tr>
-    <tr><td><strong>Tone: product update, not alarm</strong></td><td>"Wiom System — ज़रूरी अपडेट" — शांत, informational tone। Neutral, informational. Partner should feel informed, not anxious.</td></tr>
-    <tr><td><strong>Top 3 pages = education surface</strong></td><td>Data confirms: #1 Dashboard, #2 Wallet, #3 Tickets. These are the 3 surfaces we use for contextual popups.</td></tr>
-    <tr><td><strong>Blocker = WHAT changed</strong></td><td>Headlines. The 3 shifts at a glance. Must acknowledge.</td></tr>
-    <tr><td><strong>Video = HOW it works (deeper)</strong></td><td>Same 3 topics but with walkthrough, visuals, examples, narrator. Deeper understanding for those who watch.</td></tr>
-    <tr><td><strong>Quiz = confirmed understanding</strong></td><td>We know they know. Not just viewed — answered correctly.</td></tr>
-    <tr><td><strong>All content has a permanent home</strong></td><td>Rate card → Earnings section. Everything else → Wiom Paathshala. Temporary popups point there.</td></tr>
+    <tr><th style="width:220px;">Boundary</th><th>Rule</th></tr>
+    <tr><td><strong>Contextual experience > Instruction</strong></td><td>Education तब लैंड होती है जब partner का intent high हो। Wallet popup जब पैसे check कर रहे हों। Ticket popup जब काम कर रहे हों।</td></tr>
+    <tr><td><strong>1 blocker, बाकी dismissable</strong></td><td>एक forced video (Day 2, छोड़ नहीं सकते)। Day 1 के contextual popups में ✕ close है।</td></tr>
+    <tr><td><strong>Tone: product update, शांत</strong></td><td>"Wiom System — ज़रूरी अपडेट" — informational, alarming नहीं।</td></tr>
+    <tr><td><strong>Blocker = पूरी picture (video)</strong></td><td>काम, कमाई, PayG, NetBox, protection — सब एक video में। Complete picture।</td></tr>
+    <tr><td><strong>Recap = Sharp refresher + Quiz</strong></td><td>Same content, tighter। Quiz से confirm कि समझ आया।</td></tr>
+    <tr><td><strong>Day 1 पर कोई WA नहीं</strong></td><td>Day 1 organic है — partners naturally app use करें, contextual popups fire हों।</td></tr>
+    <tr><td><strong>सब Paathshala में permanently</strong></td><td>Rate card → Earnings section। Videos, quiz, guides → Wiom Paathshala।</td></tr>
   </table>
 </div>
 
-<!-- ==================== PARTNER STATES ==================== -->
 <h2>Partner States</h2>
-
 <div class="states-flow">
-  <div class="state-box sb0"><div class="s-label">S0</div><div class="s-name">Not Opened</div><div class="s-desc">Hasn't opened app since 05/04</div></div>
-  <div class="state-box sb1"><div class="s-label">S1</div><div class="s-name">First Touch</div><div class="s-desc">Saw contextual popup</div></div>
-  <div class="state-box sb2"><div class="s-label">S2</div><div class="s-name">Blocker Done</div><div class="s-desc">Completed full overview</div></div>
-  <div class="state-box sb3"><div class="s-label">S3</div><div class="s-name">Sections Seen</div><div class="s-desc">Contextual depth in 2+ sections</div></div>
-  <div class="state-box sb4"><div class="s-label">S4</div><div class="s-name">Video Watched</div><div class="s-desc">Full explainer video</div></div>
-  <div class="state-box sb5"><div class="s-label">S5</div><div class="s-name">Quiz Passed</div><div class="s-desc">Confirmed understanding</div></div>
+  <div class="state-box sb0"><div class="s-label">S0</div><div class="s-name">कुछ नहीं देखा</div><div class="s-desc">App नहीं खोला</div></div>
+  <div class="state-box sb1"><div class="s-label">S1</div><div class="s-name">Contextual देखा</div><div class="s-desc">Wallet/Ticket popup</div></div>
+  <div class="state-box sb2"><div class="s-label">S2</div><div class="s-name">Blocker पूरा</div><div class="s-desc">Video + "समझ गया"</div></div>
+  <div class="state-box sb3"><div class="s-label">S3</div><div class="s-name">Recap देखा</div><div class="s-desc">Sharp recap video</div></div>
+  <div class="state-box sb4"><div class="s-label">S4</div><div class="s-name">Quiz पास</div><div class="s-desc">Confirmed understanding</div></div>
 </div>
 
-<!-- ==================== DAY 1 ==================== -->
+<!-- DAY 1 -->
 <div class="day-card">
   <div class="day-header">
     <div class="day-num" style="background:#E65100;"><div class="dn">1</div><div class="dd">05/04</div></div>
-    <div class="day-info">
-      <h3>Contextual Popups — Top 3 Pages</h3>
-      <div class="day-sub">Partner opens app → visits Dashboard / Wallet / Tickets → sees ज़रूरी अपडेट दिखता है। Dismissable ✕</div>
-    </div>
+    <div class="day-info"><h3>Contextual Popups — Wallet + Tickets</h3><div class="day-sub">Partner naturally app use करे → relevant section में अपडेट दिखे। Dismissable ✕। कोई WA नहीं।</div></div>
   </div>
   <div class="day-body">
-    <p style="font-size:13px;color:#444;margin-bottom:6px;"><strong>Mechanism:</strong> Contextual popup planted in the 3 most-visited pages. One-time per page. Dismissable (✕ close). All fire on 05/04.</p>
-    <p style="font-size:13px;color:#444;margin-bottom:16px;"><strong>Common thread:</strong> "Wiom System — ज़रूरी अपडेट" हर popup का common thread है। Tone शांत और informational है।</p>
 
-    <!-- DASHBOARD POPUP -->
-    <div class="section-label" style="margin-top:0;">#1 Dashboard — "ज़रूरी अपडेट"</div>
+    <div class="section-label">Wallet — कमाई अपडेट</div>
     <div class="day-grid">
       <div>
-        <p style="font-size:13px;color:#444;"><strong>Trigger:</strong> Partner lands on Dashboard (most visited page)</p>
-        <p style="font-size:13px;color:#444;margin-top:6px;"><strong>Content:</strong> Overview teaser — 3 things are being updated. Points to Wallet and Tickets for details.</p>
-        <div class="logic-box" style="margin-top:8px;"><strong>Why here:</strong> Dashboard is the landing page. Maximum reach. This is the headline — "अपडेट आ रहे हैं." Not the detail.</div>
+        <p style="font-size:13px;color:#444;"><strong>Trigger:</strong> Partner Wallet खोले</p>
+        <p style="font-size:13px;color:#444;margin-top:6px;"><strong>Content:</strong> ₹300 same। बोनस construct बदला — 5 quality factors पर depend। पूरी जानकारी कल।</p>
+        <div class="logic-box"><strong>Why:</strong> Partner पैसे check कर रहा है। कमाई update तभी लैंड होता है जब income के बारे में सोच रहा हो।</div>
       </div>
       <div>
-        <div class="section-label">Screen — Dashboard Popup</div>
-        <div class="popup-wrapper">
-          <div class="popup-frame">
-            <div class="popup-bar"><span>Wiom System</span><span>ज़रूरी अपडेट</span></div>
-            <div class="popup-body" style="position:relative;">
-              <div style="position:absolute;top:4px;right:4px;width:24px;height:24px;border-radius:50%;background:#f0f0f0;display:flex;align-items:center;justify-content:center;font-size:14px;color:#888;">✕</div>
-              <h4>&#x1F4E2; Wiom System — ज़रूरी अपडेट</h4>
-              <p>Wiom system में कुछ ज़रूरी अपडेट आ रहे हैं जो आपके काम, कमाई, और customers से जुड़े हैं।</p>
-              <p style="margin-top:10px;">
-                <strong>&#x2022;</strong> काम का तरीका अपडेट हो रहा है<br>
-                <strong>&#x2022;</strong> कमाई का structure अपडेट हो रहा है<br>
-                <strong>&#x2022;</strong> Customers अब PayG plans लेंगे
-              </p>
-              <p style="margin-top:10px;font-size:12px;color:#888;">Details जानने के लिए Wallet और Tickets section देखें।</p>
-            </div>
+        <div class="popup-frame">
+          <div class="popup-bar"><span>Wiom System</span><span>ज़रूरी अपडेट</span></div>
+          <div class="popup-body">
+            <div class="popup-close">✕</div>
+            <h4>&#x1F4B0; कमाई — ज़रूरी अपडेट</h4>
+            <p><strong>₹300 प्रति connection install</strong> — यह वही रहेगा।</p>
+            <p style="margin-top:8px;"><strong>बोनस का construct बदला है:</strong><br>बोनस अब आपके काम की quality पर depend करेगा:</p>
+            <p style="padding-left:12px;font-size:12.5px;margin-top:4px;">1. Connection uptime (सबसे ज़रूरी)<br>2. Speed / performance quality<br>3. Issue कितनी जल्दी resolve करते हैं<br>4. बार-बार की शिकायतें<br>5. Installation quality</p>
+            <p style="margin-top:10px;font-size:12px;color:#888;">पूरी जानकारी कल मिलेगी — ज़रूर देखें।</p>
           </div>
         </div>
       </div>
     </div>
 
-    <!-- WALLET POPUP -->
-    <div class="section-label" style="margin-top:24px;">#2 Wallet — "कमाई अपडेट"</div>
+    <div class="section-label" style="margin-top:24px;">Tickets — काम अपडेट (2 Cohorts)</div>
     <div class="day-grid">
       <div>
-        <p style="font-size:13px;color:#444;"><strong>Trigger:</strong> Partner opens Wallet (thinking about money)</p>
-        <p style="font-size:13px;color:#444;margin-top:6px;"><strong>Content:</strong> Earning structure update — ₹300 stays, bonus now monthly up to ₹120, depends on quality. NetBox: ₹2/day idle fee, ₹50 collection, ₹200 deposit rules.</p>
-        <div class="logic-box" style="margin-top:8px;"><strong>Why here:</strong> Partner is checking money. Earning update lands when they're already thinking about income. Asset page has no data — so NetBox economics is communicated here alongside earning.</div>
+        <p style="font-size:13px;color:#444;"><strong>Trigger:</strong> Partner ticket खोले/resolve करे</p>
+        <div class="hl-green" style="margin-top:8px;"><strong>Cohort A: SLA के अंदर</strong> — बहुत अच्छा, ऐसे ही काम करो + bonus connection</div>
+        <div class="hl-red" style="margin-top:8px;"><strong>Cohort B: SLA बाहर</strong> — सुधारो + bonus warning</div>
+        <div class="logic-box"><strong>Data needed:</strong> SLA compliance flag per partner।</div>
       </div>
       <div>
-        <div class="section-label">Screen — Wallet Popup</div>
-        <div class="popup-wrapper">
-          <div class="popup-frame">
-            <div class="popup-bar"><span>Wiom System</span><span>कमाई अपडेट</span></div>
-            <div class="popup-body" style="position:relative;">
-              <div style="position:absolute;top:4px;right:4px;width:24px;height:24px;border-radius:50%;background:#f0f0f0;display:flex;align-items:center;justify-content:center;font-size:14px;color:#888;">✕</div>
-              <h4>&#x1F4B0; कमाई — नया Structure</h4>
-              <p><strong>प्रति connection install:</strong> ₹300 — यह वही रहेगा।</p>
-              <p style="margin-top:8px;"><strong>Performance Bonus:</strong> अब monthly — ₹120 तक।<br>
-              यह आपके काम की quality पर depend करेगा:</p>
-              <p style="margin-top:4px;padding-left:12px;font-size:12.5px;">
-                1. Connection uptime (सबसे ज़रूरी)<br>
-                2. Speed / performance quality<br>
-                3. Issue resolution — कितनी जल्दी solve करते हैं<br>
-                4. Repeat complaints — बार-बार की शिकायतें<br>
-                5. Installation quality — सही installation
-              </p>
-              <p style="margin-top:10px;"><strong>NetBox Rules:</strong></p>
-              <p style="padding-left:12px;font-size:12.5px;">
-                &#x2022; 15+ दिन idle device → ₹2/दिन carry fee<br>
-                &#x2022; Device return करें → ₹50 मिलेगा<br>
-                &#x2022; ₹200 security deposit — सही return पर पूरा वापस। Damage/गुम होने पर adjust होगा।
-              </p>
-              <p style="margin-top:10px;font-size:12px;color:#888;">पूरी details नए Wiom App में मिलेगी — जल्द launch हो रहा है।</p>
-            </div>
+        <div class="section-label">Cohort A — SLA अंदर</div>
+        <div class="popup-frame" style="margin-bottom:12px;">
+          <div class="popup-bar"><span>Wiom System</span><span>ज़रूरी अपडेट</span></div>
+          <div class="popup-body">
+            <div class="popup-close">✕</div>
+            <h4>&#x2705; बहुत अच्छा — ऐसे ही करते रहें!</h4>
+            <p>आपका ticket resolution अच्छा है — यह quality नए system में directly मायने रखेगी।</p>
+            <p style="margin-top:8px;"><strong>नए system में:</strong></p>
+            <p style="padding-left:12px;font-size:12.5px;">&#x2022; Connections system से आएंगी — mandatory install<br>&#x2022; अच्छा काम → ज़्यादा connections<br>&#x2022; Resolution time, uptime, quality — सब track होगा<br>&#x2022; <strong>इन सबसे बोनस तय होगा — ₹120 तक/महीना</strong></p>
+            <p style="margin-top:10px;font-size:12px;color:#888;">पूरी जानकारी कल मिलेगी।</p>
+          </div>
+        </div>
+        <div class="section-label">Cohort B — SLA बाहर</div>
+        <div class="popup-frame">
+          <div class="popup-bar"><span>Wiom System</span><span>ज़रूरी अपडेट</span></div>
+          <div class="popup-body">
+            <div class="popup-close">✕</div>
+            <h4>&#x26A0; Resolution time सुधारें</h4>
+            <p>आपका ticket resolution SLA से बाहर है — नए system में इसका सीधा असर बोनस पर पड़ेगा।</p>
+            <p style="margin-top:8px;"><strong>नए system में:</strong></p>
+            <p style="padding-left:12px;font-size:12.5px;">&#x2022; Connections system से आएंगी — mandatory install<br>&#x2022; कम performance → कम काम मिलेगा<br>&#x2022; Resolution time, uptime, quality — सब track होगा<br>&#x2022; <strong>Quality threshold से नीचे → बोनस नहीं मिलेगा</strong></p>
+            <p style="margin-top:10px;font-size:12px;color:#888;">अभी से सुधारें — पूरी जानकारी कल मिलेगी।</p>
           </div>
         </div>
       </div>
     </div>
-
-    <!-- TICKETS POPUP -->
-    <div class="section-label" style="margin-top:24px;">#3 Tickets — "काम अपडेट"</div>
-    <div class="day-grid">
-      <div>
-        <p style="font-size:13px;color:#444;"><strong>Trigger:</strong> Partner opens/resolves a ticket (in work mode)</p>
-        <p style="font-size:13px;color:#444;margin-top:6px;"><strong>Content:</strong> Work allocation update — system assigns connections, mandatory, performance-based. Quality of this work determines bonus.</p>
-        <div class="logic-box" style="margin-top:8px;"><strong>Why here:</strong> Partner is actively working. Connect their current action to the new system — "what you're doing right now will matter even more."</div>
-      </div>
-      <div>
-        <div class="section-label">Screen — Tickets Popup</div>
-        <div class="popup-wrapper">
-          <div class="popup-frame">
-            <div class="popup-bar"><span>Wiom System</span><span>काम अपडेट</span></div>
-            <div class="popup-body" style="position:relative;">
-              <div style="position:absolute;top:4px;right:4px;width:24px;height:24px;border-radius:50%;background:#f0f0f0;display:flex;align-items:center;justify-content:center;font-size:14px;color:#888;">✕</div>
-              <h4>&#x1F6E0; काम — नया System</h4>
-              <p>आप जो अभी ticket solve कर रहे हैं — नए system में इसकी quality directly count होगी।</p>
-              <p style="margin-top:8px;"><strong>नए system में:</strong></p>
-              <p style="padding-left:12px;font-size:12.5px;">
-                &#x2022; Connections अब system से आएंगी — mandatory install<br>
-                &#x2022; कोई manual process नहीं — सब app से<br>
-                &#x2022; अच्छा काम → ज़्यादा connections मिलेंगी<br>
-                &#x2022; कम performance → कम काम मिलेगा<br>
-                &#x2022; App ज़रूरी है — tickets, installations, service — सब यहाँ होगा
-              </p>
-              <p style="margin-top:10px;font-size:12px;color:#888;">पूरी details नए Wiom App में — जल्द launch हो रहा है।</p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- WA -->
-    <div class="section-label" style="margin-top:24px;">WA + SMS (same day) — Redirect</div>
-    <div class="day-grid">
-      <div>
-        <p style="font-size:13px;color:#444;">Sent to all OWNERs. Redirect only — education is in the app.</p>
-        <div class="hl-pink" style="margin-top:8px;"><strong>State transition:</strong> S0 → S1 (on any popup seen)</div>
-      </div>
-      <div>
-        <div class="wa-preview">
-          <div class="wa-bubble">
-            <strong>Wiom System — ज़रूरी अपडेट</strong><br><br>
-            Wiom system में ज़रूरी अपडेट आ रहे हैं।<br>App खोलें और details देखें।
-            <div class="wa-cta">&#128279; Wiom App खोलें</div>
-            <div class="wa-time">9:00 AM ✓✓</div>
-          </div>
-        </div>
-        <div class="sms-preview">
-          <div class="sms-label">SMS</div>
-          <div class="sms-bubble">Wiom: System mein zaruri update hai. App kholein: [link]</div>
-        </div>
-      </div>
-    </div>
+    <div class="hl-pink" style="margin-top:20px;"><strong>State:</strong> S0 → S1। <strong>कोई WA नहीं।</strong> पूरी तरह organic।</div>
   </div>
 </div>
 
-<!-- ==================== DAY 2 ==================== -->
+<!-- DAY 2 -->
 <div class="day-card" style="border:2px solid #D9008D;">
   <div class="day-header" style="background:#FDF2F8;">
     <div class="day-num" style="background:#D9008D;"><div class="dn">2</div><div class="dd">06/04</div></div>
-    <div class="day-info">
-      <h3>BLOCKER — Full Picture (Cannot Skip)</h3>
-      <div class="day-sub">Every OWNER who opens app → forced full-screen. Must complete to unlock app.</div>
-    </div>
+    <div class="day-info"><h3>BLOCKER — वीडियो (Homepage, छोड़ नहीं सकते)</h3><div class="day-sub">App खोलते ही full-screen video। "समझ गया" तक app locked। Protection message included।</div></div>
   </div>
   <div class="day-body">
-    <p style="font-size:13px;color:#444;margin-bottom:6px;"><strong>Mechanism:</strong> Full-screen blocker on app open. Cannot dismiss. Cannot access any section. Must swipe through all 3 cards and tap "समझ गया".</p>
-    <p style="font-size:13px;color:#444;margin-bottom:16px;"><strong>Difference from video:</strong> Blocker = WHAT changed (headlines, 3 cards, 1-2 min read). Video = HOW it works (deeper walkthrough with visuals, examples, narrator, 2-3 min). Blocker is text+images. Video is video.</p>
-
-    <!-- CARD 1 -->
-    <div class="section-label">Blocker Card 1 of 3 — काम</div>
     <div class="day-grid">
       <div>
-        <p style="font-size:13px;color:#444;"><strong>What this card covers:</strong> Work allocation — how connections come, why app is essential, performance = more work.</p>
-      </div>
-      <div>
-        <div class="blocker-frame">
-          <div class="blocker-bar">WIOM SYSTEM — ज़रूरी अपडेट &nbsp;|&nbsp; 1/3</div>
-          <div class="blocker-body">
-            <h4>&#x1F6E0; काम कैसे मिलेगा</h4>
-            <p>
-              <strong>Connections अब system से आएंगी</strong> — आपको manually कुछ नहीं करना।<br><br>
-              जो connection assign हो, उसे <strong>install करना mandatory</strong> है।<br><br>
-              <strong>अच्छा काम = ज़्यादा connections।</strong><br>
-              System आपकी performance track करेगा — uptime, speed, resolution time, installation quality। जितना बेहतर, उतना ज़्यादा काम।<br><br>
-              <strong>App ज़रूरी है</strong> — tickets, installations, service requests — सब कुछ app से ही होगा।
-            </p>
-            <div class="blocker-dots"><div class="dot active"></div><div class="dot"></div><div class="dot"></div></div>
-            <div style="text-align:center;color:#D9008D;font-weight:700;font-size:13px;">अगला →</div>
-          </div>
+        <div class="section-label">वीडियो Script (2-3 min)</div>
+        <div class="script-box">
+          <div class="ts">0:00 — शुरुआत</div>
+          <div class="vis">[Wiom logo + "ज़रूरी अपडेट" title card]</div>
+          <div style="color:#fff;">Wiom system में कुछ ज़रूरी अपडेट आ रहे हैं। ये आपके काम, कमाई, और customers से जुड़े हैं। आइए समझते हैं।</div>
+
+          <div class="ts">0:15 — काम कैसे मिलेगा</div>
+          <div class="vis">[System → connection assign → partner app → install ticket]</div>
+          <div style="color:#fff;">अब connections system से assign होंगी — directly आपके app में। इन्हें install करना mandatory है — कोई manual process नहीं।<br><br>जितना अच्छा काम करेंगे, उतनी ज़्यादा connections मिलेंगी। कम performance पर कम काम।<br><br>App ज़रूरी है — tickets, installations, service requests — सब app से।</div>
+
+          <div class="ts">0:50 — Customers और PayG</div>
+          <div class="vis">[Customer recharge screen → daily/weekly plan]</div>
+          <div style="color:#fff;">Customers अब अपने हिसाब से recharge करेंगे — monthly plans नहीं रहे। Daily, weekly — जितना चाहें।<br><br>आपको क्या करना है: हर connection का 30-day ISP recharge ensure करें। Customer का recharge customer करेगा — ISP recharge आपकी responsibility।</div>
+
+          <div class="ts">1:20 — कमाई कैसे होगी</div>
+          <div class="vis">[₹300 → bonus tiers → quality factors]</div>
+          <div style="color:#fff;">₹300 प्रति connection install — यह वही रहेगा।<br><br>बोनस का construct बदला है — अब एक monthly performance बोनस, ₹120 तक।<br>5 चीज़ों पर depend करेगा:<br>1. Connection uptime — सबसे ज़रूरी<br>2. Speed / performance quality<br>3. Issue कितनी जल्दी resolve करते हैं<br>4. बार-बार की शिकायतें<br>5. Installation quality</div>
+
+          <div class="ts">1:55 — NetBox</div>
+          <div class="vis">[Device idle → ₹2/day → return → ₹50 + ₹200 back]</div>
+          <div style="color:#fff;">NetBox के नए rules:<br>15 दिन से ज़्यादा idle device → ₹2/दिन carry fee।<br>Device return करें → ₹50 मिलेगा।<br>₹200 security deposit — सही return पर पूरा वापस। Damage/गुम → adjust होगा।<br>Device-wise details नए app में दिखेंगे।</div>
+
+          <div class="ts">2:25 — समय मिलेगा</div>
+          <div class="vis">[Calendar: 05/04 → 01/05, "protection window"]</div>
+          <div style="color:#fff;">नया system 10 April से शुरू होगा। लेकिन <strong>1 May तक कोई performance enforcement नहीं।</strong><br><br>यह समय समझने और adjust करने के लिए है। सवाल हो तो Trust Line: [number]</div>
+
+          <div class="ts">2:45 — Summary</div>
+          <div class="vis">[Summary card]</div>
+          <div style="color:#fff;">याद रखें: काम system से, कमाई quality से, customers PayG plans लेंगे, 1 May तक समय है। नया app 10 April को — तैयार रहें।</div>
         </div>
       </div>
-    </div>
-
-    <!-- CARD 2 -->
-    <div class="section-label" style="margin-top:20px;">Blocker Card 2 of 3 — कमाई</div>
-    <div class="day-grid">
       <div>
-        <p style="font-size:13px;color:#444;"><strong>What this card covers:</strong> Full earning structure — ₹300, bonus up to ₹120 with 5 quality factors, and NetBox economics.</p>
-      </div>
-      <div>
+        <div class="section-label">Partner को दिखेगा — Blocker Screen</div>
         <div class="blocker-frame">
-          <div class="blocker-bar">WIOM SYSTEM — ज़रूरी अपडेट &nbsp;|&nbsp; 2/3</div>
-          <div class="blocker-body">
-            <h4>&#x1F4B0; कमाई कैसे होगी</h4>
-            <p>
-              <strong>₹300 प्रति connection install</strong> — यह वही रहेगा।<br><br>
-              <strong>Performance Bonus: ₹120 तक / महीना</strong><br>
-              अब एक monthly bonus — आपके काम की quality पर:<br>
-              &nbsp;&nbsp;1. Connection uptime<br>
-              &nbsp;&nbsp;2. Speed / performance<br>
-              &nbsp;&nbsp;3. Issue resolution time<br>
-              &nbsp;&nbsp;4. Repeat complaints<br>
-              &nbsp;&nbsp;5. Installation quality<br><br>
-              <strong>NetBox:</strong><br>
-              &nbsp;&nbsp;&#x2022; 15+ दिन idle → ₹2/दिन carry fee<br>
-              &nbsp;&nbsp;&#x2022; Device return → ₹50<br>
-              &nbsp;&nbsp;&#x2022; ₹200 security deposit — सही return पर पूरा वापस
-            </p>
-            <div class="blocker-dots"><div class="dot"></div><div class="dot active"></div><div class="dot"></div></div>
-            <div style="text-align:center;color:#D9008D;font-weight:700;font-size:13px;">अगला →</div>
+          <div class="blocker-bar">WIOM SYSTEM — ज़रूरी अपडेट</div>
+          <div class="blocker-body" style="text-align:center;">
+            <div class="video-frame" style="margin:0 -18px;">
+              <div class="v-dur">2:45</div>
+              <div class="play-btn">&#9654;</div>
+              <div class="v-title">Wiom System — ज़रूरी अपडेट</div>
+              <div class="v-sub">काम, कमाई, PayG — सब कुछ समझें</div>
+            </div>
+            <p style="margin-top:14px;font-size:12px;color:#888;">वीडियो पूरा देखें — फिर "समझ गया" tap करें।</p>
+            <div style="background:#D9008D;color:#fff;text-align:center;padding:14px;border-radius:10px;font-weight:700;font-size:15px;margin-top:14px;opacity:0.4;">समझ गया ✓</div>
+            <p style="font-size:10px;color:#ccc;margin-top:6px;">वीडियो देखने के बाद active होगा</p>
           </div>
         </div>
-      </div>
-    </div>
-
-    <!-- CARD 3 -->
-    <div class="section-label" style="margin-top:20px;">Blocker Card 3 of 3 — PayG</div>
-    <div class="day-grid">
-      <div>
-        <p style="font-size:13px;color:#444;"><strong>What this card covers:</strong> PayG — customers recharge as needed, not monthly. Partner's responsibility: 30-day ISP recharge.</p>
-      </div>
-      <div>
+        <div class="section-label" style="margin-top:16px;">वीडियो के बाद</div>
         <div class="blocker-frame">
-          <div class="blocker-bar">WIOM SYSTEM — ज़रूरी अपडेट &nbsp;|&nbsp; 3/3</div>
-          <div class="blocker-body">
-            <h4>&#x1F4F1; Customers — PayG प्लान</h4>
-            <p>
-              <strong>Customers अब अपने हिसाब से recharge करेंगे।</strong><br><br>
-              Monthly plans नहीं — daily, weekly, जितना चाहें। Customer अपनी ज़रूरत के हिसाब से plan लेगा।<br><br>
-              <strong>आपको क्या करना है:</strong><br>
-              हर connection का <strong>30-day ISP recharge</strong> ensure करें। यह आपकी responsibility है।<br><br>
-              Customer का recharge customer करेगा। ISP recharge आपका काम है।
-            </p>
-            <div class="blocker-dots"><div class="dot"></div><div class="dot"></div><div class="dot active"></div></div>
+          <div class="blocker-bar">WIOM SYSTEM — ज़रूरी अपडेट</div>
+          <div class="blocker-body" style="text-align:center;">
+            <p style="font-size:14px;font-weight:600;">&#x2705; वीडियो देख लिया</p>
+            <p style="margin-top:8px;font-size:13px;color:#444;">याद रखें: 01/05 तक enforcement नहीं — समय है समझने का।</p>
             <div style="background:#D9008D;color:#fff;text-align:center;padding:14px;border-radius:10px;font-weight:700;font-size:15px;margin-top:14px;">समझ गया ✓</div>
           </div>
         </div>
       </div>
     </div>
-
-    <div class="hl-green" style="margin-top:20px;">
-      <strong>State transition:</strong> S0/S1 → S2 (blocker completed). App unlocks. Contextual section popups now available as partner navigates.
-    </div>
+    <div class="hl-green" style="margin-top:20px;"><strong>State:</strong> S0/S1 → S2। Protection video में है (2:25)। "समझ गया" के बाद app unlock।</div>
   </div>
 </div>
 
-<!-- ==================== DAY 3 ==================== -->
+<!-- DAY 3 -->
 <div class="day-card">
   <div class="day-header">
-    <div class="day-num" style="background:#2E7D32;"><div class="dn">3</div><div class="dd">07/04</div></div>
-    <div class="day-info">
-      <h3>WA Push for Non-Completers + Protection for Completers</h3>
-      <div class="day-sub">Different action based on partner state</div>
-    </div>
+    <div class="day-num" style="background:#E65100;"><div class="dn">3</div><div class="dd">07/04</div></div>
+    <div class="day-info"><h3>WA — सिर्फ Non-Completers को</h3><div class="day-sub">जिन्होंने blocker नहीं किया → app पर redirect। बाकी को कुछ नहीं।</div></div>
   </div>
   <div class="day-body">
-    <table class="tbl">
-      <tr><th>State</th><th>Action</th></tr>
-      <tr><td><span class="tag tag-s0">S0</span> Not opened</td><td><strong>WA #2 (stronger):</strong> "Wiom System में ज़रूरी अपडेट हैं — अभी तक नहीं देखा। App खोलें।"</td></tr>
-      <tr><td><span class="tag tag-s1">S1</span> Contextual only</td><td><strong>WA:</strong> "आपने अपडेट का एक हिस्सा देखा — पूरी जानकारी के लिए app खोलें।" → Blocker fires on open.</td></tr>
-      <tr><td><span class="tag tag-s2">S2+</span> Blocker done</td><td><strong>Protection (WA + popup):</strong> content below ↓</td></tr>
-    </table>
-
-    <div class="section-label" style="margin-top:16px;">S2+ Partners — Protection Message</div>
     <div class="day-grid">
       <div>
-        <p style="font-size:13px;color:#444;">After 2 days of "what's updating" — reassurance. No enforcement until 01/05. Time to adjust.</p>
+        <table class="tbl" style="margin-top:0;">
+          <tr><th>State</th><th>Action</th></tr>
+          <tr><td><span class="tag tag-s0">S0</span> / <span class="tag tag-s1">S1</span></td><td>WA → app खोलें → blocker fire</td></tr>
+          <tr><td><span class="tag tag-s2">S2+</span></td><td><strong>कुछ नहीं।</strong> Protection blocker video में था।</td></tr>
+        </table>
       </div>
       <div>
         <div class="wa-preview">
           <div class="wa-bubble">
-            <strong>Wiom — समय मिलेगा</strong><br><br>
-            नया system 10/04 से शुरू होगा।<br><br>
-            <strong>01/05 तक कोई performance enforcement नहीं।</strong><br><br>
-            यह समय समझने और adjust करने का है।<br><br>
-            किसी भी सवाल के लिए Trust Line: [number]
+            <strong>Wiom System — ज़रूरी अपडेट</strong><br><br>Wiom system में ज़रूरी अपडेट है जो आपने अभी तक नहीं देखा।<br><br>App खोलें और पूरा देखें।
+            <div class="wa-cta">&#128279; Wiom App खोलें</div>
             <div class="wa-time">10:00 AM ✓✓</div>
           </div>
         </div>
@@ -420,178 +290,128 @@
   </div>
 </div>
 
-<!-- ==================== DAY 4 ==================== -->
+<!-- DAY 4 -->
 <div class="day-card">
   <div class="day-header">
-    <div class="day-num" style="background:#1565C0;"><div class="dn">4</div><div class="dd">08/04</div></div>
-    <div class="day-info">
-      <h3>Video (Deeper) + Quiz (Confirm Understanding)</h3>
-      <div class="day-sub">S2+ partners: deeper walkthrough. S4 partners: quiz to confirm.</div>
-    </div>
+    <div class="day-num" style="background:#6A1B9A;"><div class="dn">4</div><div class="dd">08/04</div></div>
+    <div class="day-info"><h3>Sharp Recap + क्विज़ (5 सवाल)</h3><div class="day-sub">S2+: tight recap → quiz। S0/S1: app खोलें → blocker fire।</div></div>
   </div>
   <div class="day-body">
+    <p style="font-size:13px;color:#444;margin-bottom:16px;"><strong>Blocker vs Recap:</strong> Blocker (Day 2) = पूरी explanation (2:45 min)। Recap = same content, sharper — key points only (60-90 sec)। तुरंत बाद quiz।</p>
     <div class="day-grid">
       <div>
-        <div class="section-label">How video differs from blocker</div>
-        <table class="tbl" style="margin-top:0;">
-          <tr><th>Blocker (Day 2)</th><th>Video (Day 4)</th></tr>
-          <tr><td>WHAT changed — 3 headlines</td><td>HOW it works — detailed walkthrough</td></tr>
-          <tr><td>Text + images, swipeable cards</td><td>Video with narrator, visuals, examples</td></tr>
-          <tr><td>~1-2 min read</td><td>~2-3 min watch</td></tr>
-          <tr><td>"Connections system se aayengi"</td><td>Shows example: ticket aata hai → accept → install → quality tracked → bonus calculate</td></tr>
-          <tr><td>"₹120 tak bonus, 5 factors"</td><td>Walks through: uptime check → speed test → complaint history → score → tier → ₹ amount</td></tr>
-          <tr><td>"Customers PayG plans lenge"</td><td>Shows: customer recharge flow, what partner sees, ISP recharge responsibility in practice</td></tr>
-          <tr><td>Forced — cannot skip</td><td>Voluntary — surfaced via popup, in Paathshala</td></tr>
-        </table>
-        <div class="logic-box" style="margin-top:12px;">
-          <strong>Why this order works:</strong> Blocker gave the partner the headlines (WHAT). They've had 2 days to absorb. Now the video connects it into a coherent story (HOW) with examples they can relate to. It's not new information — it's the same 3 topics, but now they understand the mechanics.
+        <div class="section-label">Recap Script (60-90 sec)</div>
+        <div class="script-box">
+          <div class="ts">0:00</div><div style="color:#fff;">Wiom system अपडेट — quick recap:</div>
+          <div class="ts">0:05 — काम</div><div style="color:#fff;">Connections system से। Mandatory। अच्छा काम = ज़्यादा काम। App ज़रूरी।</div>
+          <div class="ts">0:20 — कमाई</div><div style="color:#fff;">₹300/connection — same। बोनस ₹120 तक — uptime, speed, resolution, complaints, installation quality।</div>
+          <div class="ts">0:35 — NetBox</div><div style="color:#fff;">Idle 15+ दिन = ₹2/दिन। Return = ₹50। ₹200 deposit — सही return पर वापस।</div>
+          <div class="ts">0:45 — PayG</div><div style="color:#fff;">Customers अपने हिसाब से recharge। Monthly नहीं। आपका काम: 30-day ISP recharge।</div>
+          <div class="ts">0:55</div><div style="color:#fff;">01/05 तक enforcement नहीं। नया app 10 April। अब quiz — 5 सवाल।</div>
         </div>
       </div>
       <div>
-        <div class="section-label">App Popup → Paathshala</div>
+        <div class="section-label">App Popup</div>
         <div class="popup-frame" style="margin-bottom:12px;">
-          <div class="popup-bar"><span>Wiom Paathshala</span><span>वीडियो + क्विज़</span></div>
+          <div class="popup-bar"><span>Wiom Paathshala</span><span>रिकैप + क्विज़</span></div>
           <div class="popup-body">
-            <h4>&#127909; पूरा system विस्तार में समझें</h4>
-            <p>एक छोटा video देखें — काम, कमाई, और PayG कैसे काम करेगा, step by step।</p>
-            <p style="margin-top:6px;font-size:12px;color:#888;">Video के बाद quiz — 3 सवालों के जवाब दें।</p>
-            <div class="popup-cta">&#x25B6; Video देखें</div>
-            <div class="popup-dismiss">बाद में देखूंगा</div>
+            <h4>&#127909; Quick Recap + क्विज़</h4>
+            <p>1 मिनट का recap — फिर 5 सवालों के जवाब दें।</p>
+            <div class="popup-cta">&#x25B6; Recap देखें</div>
           </div>
         </div>
-        <div class="video-frame">
-          <div class="v-dur">2:30</div>
-          <div class="play-btn">&#9654;</div>
-          <div class="v-title">Wiom System — कैसे काम करेगा</div>
-          <div class="v-sub">काम, कमाई, PayG — कदम दर कदम</div>
-        </div>
-        <div class="channel-sep">After video → Quiz</div>
-        <div class="popup-frame">
-          <div class="popup-bar"><span>क्विज़</span><span>3 सवाल</span></div>
-          <div class="popup-body">
-            <h4>&#x1F4DD; क्विज़</h4>
-            <div style="background:#F5F5F7;padding:10px;border-radius:8px;margin-top:8px;">
-              <p style="font-size:12px;font-weight:600;">Q1: Bonus अब कैसे calculate होगा?</p>
-              <div style="margin-top:6px;">
-                <div style="padding:6px 10px;background:#fff;border:1px solid #ddd;border-radius:6px;margin-bottom:4px;font-size:11px;">A. पहले जैसे अलग-अलग</div>
-                <div style="padding:6px 10px;background:#E8F5E9;border:1px solid #2E7D32;border-radius:6px;margin-bottom:4px;font-size:11px;color:#2E7D32;font-weight:600;">B. एक monthly performance bonus &#x2714;</div>
-                <div style="padding:6px 10px;background:#fff;border:1px solid #ddd;border-radius:6px;font-size:11px;">C. Bonus बंद हो गया</div>
-              </div>
-            </div>
-            <p style="font-size:11px;color:#888;margin-top:8px;">2 और सवाल बाकी...</p>
+        <div class="quiz-frame">
+          <div class="quiz-bar">क्विज़ — 5 सवाल (4/5 पास)</div>
+          <div class="quiz-body">
+            <div class="quiz-q"><p>Q1: अब connections कैसे मिलेंगी?</p><div class="quiz-opt">A. पहले जैसे — खुद ढूंढनी होंगी</div><div class="quiz-opt correct">B. System से assign होंगी — mandatory install &#x2714;</div><div class="quiz-opt">C. BDO से मिलेंगी</div></div>
+            <div class="quiz-q"><p>Q2: बोनस किस चीज़ पर depend करेगा?</p><div class="quiz-opt">A. सिर्फ connections की संख्या पर</div><div class="quiz-opt">B. Customer rating पर (पुराना system)</div><div class="quiz-opt correct">C. काम की quality — uptime, speed, resolution, complaints, installation &#x2714;</div></div>
+            <div class="quiz-q"><p>Q3: Customer अब recharge कैसे करेगा?</p><div class="quiz-opt">A. Monthly plan — पहले जैसा</div><div class="quiz-opt correct">B. अपने हिसाब से — daily, weekly, जब चाहे &#x2714;</div><div class="quiz-opt">C. Partner recharge करेगा</div></div>
+            <div class="quiz-q"><p>Q4: Idle NetBox (15+ दिन) पर क्या होगा?</p><div class="quiz-opt correct">A. ₹2/दिन carry fee &#x2714;</div><div class="quiz-opt">B. कुछ नहीं होगा</div><div class="quiz-opt">C. तुरंत ₹200 कट जाएगा</div></div>
+            <div class="quiz-q"><p>Q5: Performance enforcement कब से?</p><div class="quiz-opt">A. 10 April से</div><div class="quiz-opt">B. तुरंत</div><div class="quiz-opt correct">C. 1 May से — उससे पहले समय है &#x2714;</div></div>
+            <div style="background:#D9008D;color:#fff;text-align:center;padding:12px;border-radius:10px;font-weight:700;font-size:14px;margin-top:12px;">जवाब Submit करें</div>
+            <p style="font-size:11px;color:#888;margin-top:6px;text-align:center;">4/5 सही। दोबारा try कर सकते हैं।</p>
           </div>
         </div>
       </div>
     </div>
-    <div class="hl-green" style="margin-top:16px;">
-      <strong>WA (same day):</strong> "Wiom Paathshala में video देखें — quiz भी करें।" Redirect only.<br>
-      <strong>State:</strong> S2 → S4 (video) → S5 (quiz passed). S5 = we know they know.
-    </div>
+    <div class="hl-green" style="margin-top:16px;"><strong>State:</strong> S2 → S3 (recap) → S4 (quiz pass)। <strong>WA (S2+ only):</strong> "Wiom Paathshala में recap + quiz पूरा करें।"</div>
   </div>
 </div>
 
-<!-- ==================== DAY 5 ==================== -->
+<!-- DAY 5 -->
 <div class="day-card">
   <div class="day-header">
-    <div class="day-num" style="background:#E65100;"><div class="dn">5</div><div class="dd">09/04</div></div>
-    <div class="day-info">
-      <h3>App Transition + Hard Lock for Non-Completers</h3>
-      <div class="day-sub">Completers: download instructions. Non-completers: app locked until they complete.</div>
-    </div>
+    <div class="day-num" style="background:#C62828;"><div class="dn">5</div><div class="dd">09/04</div></div>
+    <div class="day-info"><h3>App Transition + Non-Completers Lock</h3><div class="day-sub">S2+: नया app डाउनलोड। S0/S1: app locked — blocker पूरा करो।</div></div>
   </div>
   <div class="day-body">
     <div class="day-grid">
       <div>
         <table class="tbl" style="margin-top:0;">
           <tr><th>State</th><th>Action</th></tr>
-          <tr><td><span class="tag tag-s2">S2+</span></td><td>App transition: WA + SMS + popup — download new app. Old app stops tomorrow.</td></tr>
-          <tr><td><span class="tag tag-s0">S0/S1</span></td><td><strong>APP LOCKED.</strong> Full-screen — must complete blocker. Final WA #3.</td></tr>
+          <tr><td><span class="tag tag-s2">S2+</span></td><td>WA + SMS + popup: नया app डाउनलोड। कल पुराना बंद।</td></tr>
+          <tr><td><span class="tag tag-s0">S0/S1</span></td><td><strong>APP LOCKED।</strong> Blocker पूरा करो। Final WA।</td></tr>
         </table>
-        <div class="logic-box" style="margin-top:12px;">
-          <strong>Why Day 5 is the wall:</strong> Tomorrow new app launches. A partner who enters without ANY education = worst case (confusion calls, disengagement). Hard lock is justified — 1 day before launch.
-        </div>
       </div>
       <div>
         <div class="section-label">S2+ — Transition</div>
         <div class="wa-preview" style="margin-bottom:12px;">
-          <div class="wa-bubble">
-            <strong>Wiom — नया App तैयार</strong><br><br>
-            नया Wiom App कल launch हो रहा है (10/04)।<br><br>
-            अभी डाउनलोड/अपडेट करें — कल से सब कुछ इसी app में होगा।<br><br>
-            पुराना app कल बंद हो जाएगा।
-            <div class="wa-cta">&#128279; App डाउनलोड / अपडेट करें</div>
-            <div class="wa-time">9:00 AM ✓✓</div>
-          </div>
+          <div class="wa-bubble"><strong>Wiom — नया App तैयार</strong><br><br>नया Wiom App कल launch (10/04)।<br>अभी डाउनलोड/अपडेट करें।<br>पुराना app कल बंद।<div class="wa-cta">&#128279; App डाउनलोड करें</div><div class="wa-time">9:00 AM ✓✓</div></div>
         </div>
         <div class="section-label">S0/S1 — Hard Lock</div>
-        <div class="blocker-frame">
+        <div class="blocker-frame" style="border-color:#C62828;">
           <div class="blocker-bar" style="background:#C62828;">&#x26A0; ज़रूरी है — पूरा करें</div>
-          <div class="blocker-body">
-            <h4>Wiom System अपडेट अभी तक नहीं देखा</h4>
-            <p>ये अपडेट आपके काम और कमाई से directly जुड़े हैं। कल से नया app शुरू हो रहा है — पहले ये समझें।</p>
-            <div style="background:#D9008D;color:#fff;text-align:center;padding:14px;border-radius:10px;font-weight:700;font-size:15px;margin-top:14px;">अभी पूरा करें →</div>
-          </div>
+          <div class="blocker-body"><h4>Wiom System अपडेट अभी तक नहीं देखा</h4><p>ये अपडेट आपके काम और कमाई से जुड़े हैं। कल नया app शुरू — पहले ये समझें।</p><div style="background:#C62828;color:#fff;text-align:center;padding:14px;border-radius:10px;font-weight:700;font-size:15px;margin-top:14px;">अभी पूरा करें →</div></div>
         </div>
       </div>
     </div>
   </div>
 </div>
 
-<!-- ==================== LAUNCH ==================== -->
+<!-- LAUNCH -->
 <div class="day-card" style="border:2px solid #E8751A;">
   <div class="day-header" style="background:#FFF3E0;">
     <div class="day-num" style="background:#E8751A;"><div class="dn">&#x1F680;</div><div class="dd">10/04</div></div>
-    <div class="day-info">
-      <h3>Launch — New App Live, Old App Blocked</h3>
-      <div class="day-sub">Declaration becomes reality. CSP-specific data visible for the first time.</div>
-    </div>
+    <div class="day-info"><h3>Launch — नया App Live, पुराना बंद</h3><div class="day-sub">Declaration → Reality। CSP-specific data पहली बार।</div></div>
   </div>
   <div class="day-body">
     <table class="tbl">
       <tr><th>State</th><th>Experience</th></tr>
-      <tr><td><span class="tag tag-s5">S5</span> Quiz passed</td><td>Best case. Opens new app → real data. Nothing is a surprise. Paathshala for revisit.</td></tr>
-      <tr><td><span class="tag tag-s2">S2-S4</span> Blocker done</td><td>Good enough. Headlines absorbed. New app popup fills gaps with their individual data.</td></tr>
-      <tr><td><span class="tag tag-s0">S0</span> Never opened</td><td>Worst case. Old app blocked → redirect. New app popup is their only pre-education. Trust Line risk.</td></tr>
+      <tr><td><span class="tag tag-s4">S4</span></td><td>Best case। New app → real data। कोई surprise नहीं।</td></tr>
+      <tr><td><span class="tag tag-s2">S2</span></td><td>Good enough। Headlines clear। New app popup gaps fill करेगा।</td></tr>
+      <tr><td><span class="tag tag-s0">S0</span></td><td>Worst case। Old app blocked → redirect। New app popup + Paathshala = safety net।</td></tr>
     </table>
-    <div class="hl" style="margin-top:12px;">
-      <strong>For all:</strong> Old app blocked → redirect. WA + SMS: "Naya app live hai" + deep link. New app first-open: CSP-specific popup (their rate card, their devices, how app works). Wiom Paathshala available with video + quiz + guides.
-    </div>
   </div>
 </div>
 
-<!-- ==================== STATE MATRIX ==================== -->
+<!-- STATE MATRIX -->
 <h2>Complete State Matrix</h2>
 <div class="card">
   <table class="tbl">
-    <tr><th style="width:70px;">Day</th><th>S0 (not opened)</th><th>S1 (contextual)</th><th>S2 (blocker done)</th><th>S3-S5 (deepening)</th></tr>
-    <tr><td><strong>05/04</strong></td><td>WA: "App kholein"</td><td style="background:#FFF3E0;">Contextual in visited section</td><td>—</td><td>—</td></tr>
-    <tr><td><strong>06/04</strong></td><td>On open → blocker</td><td style="background:#FDF2F8;">On open → blocker</td><td style="background:#E8F5E9;">Section popups as navigate</td><td>—</td></tr>
-    <tr><td><strong>07/04</strong></td><td style="background:#FFEBEE;">WA #2 push</td><td style="background:#FFEBEE;">WA: "puri picture dekhein"</td><td style="background:#E8F5E9;">Protection msg</td><td style="background:#E8F5E9;">Protection msg</td></tr>
-    <tr><td><strong>08/04</strong></td><td>On open → blocker</td><td>On open → blocker</td><td style="background:#E3F2FD;">Video → Quiz</td><td style="background:#F3E8FF;">Quiz (if pending)</td></tr>
-    <tr><td><strong>09/04</strong></td><td style="background:#FFEBEE;"><strong>APP LOCKED</strong></td><td style="background:#FFEBEE;"><strong>APP LOCKED</strong></td><td style="background:#E8F5E9;">Download new app</td><td style="background:#E8F5E9;">Download new app</td></tr>
-    <tr><td><strong>10/04</strong></td><td colspan="4" style="background:#FFF3E0;text-align:center;"><strong>New app live. Old blocked. CSP-specific first-open popup. Paathshala available.</strong></td></tr>
+    <tr><th style="width:70px;">Day</th><th>S0</th><th>S1</th><th>S2</th><th>S3/S4</th></tr>
+    <tr><td><strong>05/04</strong></td><td>—</td><td style="background:#FFF3E0;">Wallet/Ticket popup</td><td>—</td><td>—</td></tr>
+    <tr><td><strong>06/04</strong></td><td>Open → blocker video</td><td style="background:#FDF2F8;">Open → blocker video</td><td style="background:#E8F5E9;">Section popups continue</td><td>—</td></tr>
+    <tr><td><strong>07/04</strong></td><td style="background:#FFEBEE;">WA → app → blocker</td><td style="background:#FFEBEE;">WA → app → blocker</td><td>—</td><td>—</td></tr>
+    <tr><td><strong>08/04</strong></td><td>Open → blocker</td><td>Open → blocker</td><td style="background:#F3E8FF;">Recap → Quiz</td><td style="background:#F3E8FF;">Quiz (pending)</td></tr>
+    <tr><td><strong>09/04</strong></td><td style="background:#FFEBEE;"><strong>LOCKED</strong></td><td style="background:#FFEBEE;"><strong>LOCKED</strong></td><td style="background:#E8F5E9;">Download new app</td><td style="background:#E8F5E9;">Download new app</td></tr>
+    <tr><td><strong>10/04</strong></td><td colspan="4" style="background:#FFF3E0;text-align:center;"><strong>नया app live। पुराना blocked। CSP-specific popup। Paathshala।</strong></td></tr>
   </table>
 </div>
 
-<!-- ==================== DATA ==================== -->
 <h2>Data Requirements</h2>
 <div class="card">
   <table class="tbl" style="margin-top:0;">
-    <tr><th>Data point</th><th>Source</th><th>Used for</th></tr>
-    <tr><td>app_opened_post_05apr</td><td>CleverTap</td><td>Identify S0 for WA pushes</td></tr>
-    <tr><td>contextual_popup_seen + section</td><td>CleverTap event</td><td>Track S1. Don't re-show.</td></tr>
-    <tr><td>blocker_completed</td><td>CleverTap event ("समझ गया" tap)</td><td>Gate S2. Unlock app. WA logic.</td></tr>
-    <tr><td>video_watched</td><td>CleverTap (video completion)</td><td>Surface quiz. Track S4.</td></tr>
-    <tr><td>quiz_passed</td><td>CleverTap (score >= threshold)</td><td>Track S5. Confirmed understanding.</td></tr>
+    <tr><th>Data</th><th>Source</th><th>Used for</th></tr>
+    <tr><td>app_opened_post_05apr</td><td>CleverTap</td><td>S0 identify → WA Day 3</td></tr>
+    <tr><td>contextual_popup_seen</td><td>CleverTap</td><td>S1 track। Don't re-show।</td></tr>
+    <tr><td>SLA compliance flag</td><td>Ticket data</td><td>Ticket popup cohort A vs B</td></tr>
+    <tr><td>blocker_video_completed</td><td>CleverTap</td><td>S2 gate। App unlock।</td></tr>
+    <tr><td>recap_watched</td><td>CleverTap</td><td>S3। Quiz surface।</td></tr>
+    <tr><td>quiz_passed (≥4/5)</td><td>CleverTap</td><td>S4। Confirmed understanding।</td></tr>
   </table>
-  <div class="hl-green" style="margin-top:12px;">
-    <strong>Confirmed:</strong> ~1,400-1,460 OWNER partners open app daily. ~17 opens/day average. Top pages: #1 Dashboard → #2 Wallet → #3 Tickets.
-  </div>
+  <div class="hl-green" style="margin-top:12px;"><strong>Confirmed:</strong> ~1,400-1,460 OWNER+ADMIN daily। ~17 opens/day। Top: Dashboard → Wallet → Tickets।</div>
 </div>
 
-<div style="text-align:center;padding:20px;font-size:12px;color:#999;">
-  Wiom Internal &nbsp;|&nbsp; Comms Plan v4 &nbsp;|&nbsp; <a href="framework.html" style="color:#D9008D;">Framework</a> &nbsp;|&nbsp; <a href="index.html" style="color:#D9008D;">Dashboard</a>
-</div>
-
+<div style="text-align:center;padding:20px;font-size:12px;color:#999;">Wiom Internal &nbsp;|&nbsp; v5 &nbsp;|&nbsp; <a href="framework.html" style="color:#D9008D;">Framework</a> &nbsp;|&nbsp; <a href="index.html" style="color:#D9008D;">Dashboard</a></div>
 </body>
 </html>
