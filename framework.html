@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CSP Migration Framework</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: 'Segoe UI', Arial, sans-serif; background: #F5F5F7; color: #1a1a1a; max-width: 960px; margin: 0 auto; padding: 0 20px 60px; }
+  .header { background: linear-gradient(135deg, #D9008D 0%, #A0006A 100%); color: #fff; padding: 32px 32px 28px; margin: 0 -20px 0; }
+  .header h1 { font-size: 24px; font-weight: 700; }
+  .header p { font-size: 13px; opacity: 0.8; margin-top: 6px; }
+  h2 { font-size: 20px; font-weight: 700; margin: 32px 0 16px; color: #1a1a1a; }
+  h3 { font-size: 15px; font-weight: 700; margin: 20px 0 8px; color: #D9008D; }
+  .card { background: #fff; border-radius: 14px; padding: 20px 24px; margin-bottom: 14px; border: 1px solid #EBEBEB; }
+  .card p, .card li { font-size: 13.5px; line-height: 1.7; color: #444; }
+  .card ul, .card ol { padding-left: 20px; margin-top: 6px; }
+  .card li { margin-bottom: 4px; }
+  .highlight { background: #FFF3E0; border-left: 4px solid #E8751A; padding: 14px 18px; border-radius: 0 10px 10px 0; margin: 12px 0; font-size: 13px; line-height: 1.6; color: #555; }
+  .highlight-pink { background: #FDF2F8; border-left: 4px solid #D9008D; padding: 14px 18px; border-radius: 0 10px 10px 0; margin: 12px 0; font-size: 13px; line-height: 1.6; color: #555; }
+  .rule-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-top: 12px; }
+  .rule-card { border-radius: 10px; padding: 14px 16px; border: 1px solid #e8e8e8; }
+  .rule-card.do { background: #E8F5E9; border-color: #C8E6C9; }
+  .rule-card.dont { background: #FFEBEE; border-color: #FFCDD2; }
+  .rule-card strong { display: block; font-size: 13px; margin-bottom: 4px; }
+  .rule-card.do strong { color: #2E7D32; }
+  .rule-card.dont strong { color: #C62828; }
+  .rule-card span { font-size: 12.5px; color: #555; line-height: 1.5; }
+  .phase-card { border-radius: 14px; padding: 20px 24px; margin-bottom: 14px; border: 1px solid #EBEBEB; background: #fff; }
+  .phase-label { font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 6px; }
+  .phase-title { font-size: 16px; font-weight: 700; color: #1a1a1a; margin-bottom: 4px; }
+  .phase-dates { font-size: 12px; color: #888; margin-bottom: 12px; }
+  .constraint-tag { display: inline-block; padding: 3px 10px; border-radius: 6px; font-size: 11px; font-weight: 600; margin: 2px 4px 2px 0; }
+  .ct-old { background: #EDE7F6; color: #5E35B1; }
+  .ct-new { background: #E8F5E9; color: #2E7D32; }
+  .ct-wa { background: #E0F7FA; color: #00695C; }
+  .ct-static { background: #FFF3E0; color: #E65100; }
+  .ct-personal { background: #FCE4EC; color: #C62828; }
+  .boundary-table { width: 100%; border-collapse: collapse; margin-top: 12px; font-size: 13px; }
+  .boundary-table th { background: #F5F5F7; padding: 10px 14px; text-align: left; font-weight: 700; font-size: 12px; color: #555; border-bottom: 2px solid #ddd; }
+  .boundary-table td { padding: 10px 14px; border-bottom: 1px solid #f0f0f0; color: #444; vertical-align: top; }
+  .boundary-table tr:last-child td { border-bottom: none; }
+  .day-row { display: grid; grid-template-columns: 80px 1fr; gap: 16px; padding: 14px 0; border-bottom: 1px solid #f0f0f0; }
+  .day-row:last-child { border-bottom: none; }
+  .day-num { font-size: 13px; font-weight: 700; color: #D9008D; }
+  .day-date { font-size: 11px; color: #888; }
+  .day-content { font-size: 13px; line-height: 1.6; color: #444; }
+  .day-content strong { color: #1a1a1a; }
+  .blocker-tag { display: inline-block; background: #C62828; color: #fff; font-size: 10px; font-weight: 700; padding: 2px 8px; border-radius: 4px; margin-left: 6px; vertical-align: middle; }
+  .contextual-tag { display: inline-block; background: #2E7D32; color: #fff; font-size: 10px; font-weight: 700; padding: 2px 8px; border-radius: 4px; margin-left: 6px; vertical-align: middle; }
+  @media (max-width: 768px) { .rule-grid { grid-template-columns: 1fr; } .day-row { grid-template-columns: 60px 1fr; } }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <h1>CSP Migration — Objective & Framework</h1>
+  <p>Foundation document &nbsp;|&nbsp; ~1,200 CSPs &nbsp;|&nbsp; Announcement: 05/04/26 &nbsp;|&nbsp; App Live: 10/04/26</p>
+</div>
+
+<!-- ==================== OBJECTIVE ==================== -->
+<h2>Objective</h2>
+<div class="card">
+  <div class="highlight-pink">
+    <strong>By 10/04/26 (app live), every CSP has a mental model of what changed and why.</strong><br>
+    <strong>By 30/04/26 (month end), every CSP trusts the system — no unexplained number, no surprise deduction, no confusion call.</strong>
+  </div>
+  <p style="margin-top:14px;">Specifically, by the time the new app goes live:</p>
+  <ol>
+    <li><strong>Knows what changed</strong> — earning structure, work allocation, PayG, interface</li>
+    <li><strong>Is not surprised</strong> by anything they see in the new app on day 1</li>
+    <li><strong>Has the new app installed</strong> and can open it</li>
+  </ol>
+  <p style="margin-top:12px;">And by month end:</p>
+  <ol start="4">
+    <li><strong>Understands their individual numbers</strong> — bonus, devices, quality score, payout breakdown</li>
+    <li><strong>Knows how to improve</strong> — what helps/hurts their score, how to earn more</li>
+    <li><strong>Self-serves from the app</strong> — does not need to call Trust Line for information that's available in-app</li>
+  </ol>
+</div>
+
+<!-- ==================== HARD FACTS ==================== -->
+<h2>Hard Facts (Constraints)</h2>
+<div class="card">
+  <table class="boundary-table">
+    <tr><th>Constraint</th><th>Implication</th></tr>
+    <tr><td><strong>Old app: popup on any trigger, static content only</strong></td><td>Can show declaration-mode education (rules, structure, "what is changing") but NOT CSP-specific data (no device counts, no bonus history, no individual state). Same content for all 1,200 CSPs.</td></tr>
+    <tr><td><strong>New app: full capability, CSP-specific data</strong></td><td>Can show individual device counts, bonus projections, quality scores, ticket queues. This is where personalisation starts — not before.</td></tr>
+    <tr><td><strong>No field support / BDO teams</strong></td><td>All communication must work without human mediation. If a partner doesn't understand, they call Trust Line — and that's the failure mode we're designing against.</td></tr>
+    <tr><td><strong>Announcement: 05/04/26</strong></td><td>First time partners hear about the change. 5 days before app goes live.</td></tr>
+    <tr><td><strong>App live: 10/04/26</strong></td><td>New app available. Old app blocked and redirected. Partners see CSP-specific data for the first time.</td></tr>
+    <tr><td><strong>WhatsApp / SMS</strong></td><td>Redirect channel only. Never the education itself. Gets partner to the right place — old app popup, new app screen, video.</td></tr>
+    <tr><td><strong>Partners open app for tickets</strong></td><td>Installation requests and service tickets are the #1 reason partners use the app daily. Everything else sits alongside this workflow.</td></tr>
+  </table>
+</div>
+
+<!-- ==================== GOVERNING RULES ==================== -->
+<h2>Governing Rules</h2>
+<div class="card">
+  <div class="rule-grid">
+    <div class="rule-card do">
+      <strong>&#x2714; Only introduce what becomes relevant that day</strong>
+      <span>If the partner can't act on it or see it yet, don't tell them about it. Information without context creates confusion, not clarity.</span>
+    </div>
+    <div class="rule-card dont">
+      <strong>&#x2718; Never repeat what was already shown</strong>
+      <span>If a concept was covered on Day 1, don't re-explain it on Day 3. Build on what was said — don't restart.</span>
+    </div>
+    <div class="rule-card do">
+      <strong>&#x2714; Maximum 1 blocker in the entire sequence</strong>
+      <span>One forced acknowledgment (cannot skip). Use only when CSP must understand something before taking any action. Every other touchpoint is contextual.</span>
+    </div>
+    <div class="rule-card dont">
+      <strong>&#x2718; Never show what CSP cannot act on yet</strong>
+      <span>Don't show device counts before app is live (old app can't show CSP-specific data). Don't show quality score before measurement starts. Don't show projected bonus before the screen exists.</span>
+    </div>
+    <div class="rule-card do">
+      <strong>&#x2714; Old app = declaration. New app = personalisation.</strong>
+      <span>Old app educates on rules and structure (same for all). New app shows individual reality (different for each CSP).</span>
+    </div>
+    <div class="rule-card dont">
+      <strong>&#x2718; WhatsApp is never the education</strong>
+      <span>WA gets the partner to the right place (old app, new app, video). It doesn't carry the educational content itself.</span>
+    </div>
+  </div>
+</div>
+
+<!-- ==================== BLOCKER vs CONTEXTUAL ==================== -->
+<h2>Blocker vs Contextual Framework</h2>
+<div class="card">
+  <table class="boundary-table">
+    <tr><th style="width:160px;">Type</th><th>When to use</th><th>Rules</th></tr>
+    <tr>
+      <td><span class="blocker-tag">BLOCKER</span></td>
+      <td>CSP must acknowledge before they can take any action in app. They cannot dismiss or skip.</td>
+      <td>Maximum <strong>1 in entire sequence</strong>. Day 1 of announcement (05/04/26) only. Covers the "what changed" — not the details.</td>
+    </tr>
+    <tr>
+      <td><span class="contextual-tag">CONTEXTUAL</span></td>
+      <td>Available, not forced. CSP can access anytime. System surfaces it based on state or time.</td>
+      <td>All subsequent days. Popup triggered by partner action (opening ticket, visiting homepage). Dismissable. Available in Wiom Paathshala permanently.</td>
+    </tr>
+  </table>
+
+  <div class="highlight" style="margin-top:16px;">
+    <strong>Why only 1 blocker:</strong> Every blocker is friction. Friction on Day 1 is acceptable — the partner needs to know the world has changed. Friction on Day 2, 3, 4 is not — they have work to do (tickets). After the blocker, all education is contextual: surfaced when relevant, dismissable, and always revisitable.
+  </div>
+</div>
+
+<!-- ==================== WHAT GOES WHERE ==================== -->
+<h2>Channel Boundary — What Goes Where</h2>
+<div class="card">
+  <table class="boundary-table">
+    <tr><th>Channel</th><th>Capability</th><th>Use for</th><th>Never use for</th></tr>
+    <tr>
+      <td><span class="constraint-tag ct-old">Old App</span></td>
+      <td>Popup on any trigger. Static content only. No CSP-specific data.</td>
+      <td>Declaration: rules, structure, "what is changing", video, quiz. Same for all CSPs.</td>
+      <td>Individual device counts, bonus projections, personalised state.</td>
+    </tr>
+    <tr>
+      <td><span class="constraint-tag ct-new">New App</span></td>
+      <td>Full screens, CSP-specific data, interactive, primary work interface.</td>
+      <td>Everything: tickets, earnings, devices, quality score, personalised education, Wiom Paathshala.</td>
+      <td>Nothing — this is the single source of truth from 10/04/26 onwards.</td>
+    </tr>
+    <tr>
+      <td><span class="constraint-tag ct-wa">WhatsApp / SMS</span></td>
+      <td>Text message + link. High reach.</td>
+      <td>Redirect: "video dekho old app mein", "naya app download karo", "app mein score dekho".</td>
+      <td>Education itself. Never explain the system in a WA message.</td>
+    </tr>
+  </table>
+</div>
+
+<!-- ==================== PHASES ==================== -->
+<h2>Migration Phases</h2>
+
+<!-- PHASE 0 -->
+<div class="phase-card">
+  <div class="phase-label" style="color:#888;">Phase 0 — Pre-Announcement</div>
+  <div class="phase-title">Operational Only</div>
+  <div class="phase-dates">Before 05/04/26</div>
+  <p>Only operational comms that don't reference the new system. PNM telemetry installation is the one active workstream — partner confirms technician visit. No mention of bonus, earning changes, or new app.</p>
+  <div class="highlight">
+    <strong>Why no system mention yet:</strong> If we tell partners "the system is changing" 10 days before it goes live, but they can't see or do anything about it, we create anxiety without resolution. Telemetry installation is operational — it doesn't require context about the new system.
+  </div>
+</div>
+
+<!-- PHASE 1 -->
+<div class="phase-card">
+  <div class="phase-label" style="color:#4A90D9;">Phase 1 — Announcement to Launch</div>
+  <div class="phase-title">Declaration Mode — Build the Mental Model</div>
+  <div class="phase-dates">05/04/26 – 09/04/26 (5 days)</div>
+  <p><strong>Old app capability:</strong> Popup on trigger, static content only.<br>
+  <strong>Mode:</strong> Declaration. Rules and structure. Same for all CSPs. No individual data.<br>
+  <strong>Goal:</strong> By 10/04/26, partner knows what changed and is not surprised when they open the new app.</p>
+
+  <div style="margin-top:16px;">
+    <div class="day-row">
+      <div><div class="day-num">Day 1</div><div class="day-date">05/04/26</div></div>
+      <div class="day-content">
+        <strong>The Announcement</strong> <span class="blocker-tag">BLOCKER</span><br>
+        What changed and why — the three shifts explained:<br>
+        <strong>1. Work:</strong> Connections come from system, mandatory, no manual intervention, app is essential.<br>
+        <strong>2. Earning:</strong> ₹300/connection stays. Bonus now one monthly amount (up to ₹120) based on quality. NetBox: ₹2/day idle fee, ₹50 collection, ₹200 security deposit.<br>
+        <strong>3. PayG:</strong> Customers recharge as needed (not monthly). Your job: ensure 30-day ISP recharge.<br><br>
+        <em>Format: Old app popup (blocker — must acknowledge). WA + SMS redirect to old app. Video + quiz recommended.</em><br>
+        <em>This is the only blocker in the entire sequence.</em>
+      </div>
+    </div>
+    <div class="day-row">
+      <div><div class="day-num">Day 2</div><div class="day-date">06/04/26</div></div>
+      <div class="day-content">
+        <strong>Carry Fee Policy</strong> <span class="contextual-tag">CONTEXTUAL</span><br>
+        Idle NetBox = ₹2/day. Device-wise details will be visible in new app.<br><br>
+        <em>Format: WA declaration. Short, factual. No individual device counts (old app can't show them).</em><br>
+        <em>Why today: Earning structure was introduced yesterday. Now the specific policy that affects their devices.</em>
+      </div>
+    </div>
+    <div class="day-row">
+      <div><div class="day-num">Day 3</div><div class="day-date">07/04/26</div></div>
+      <div class="day-content">
+        <strong>Protection Confirmation</strong> <span class="contextual-tag">CONTEXTUAL</span><br>
+        You'll have time to adjust. No enforcement until 01/05/26. Focus on understanding first.<br><br>
+        <em>Format: WA text. Psychological safety net.</em><br>
+        <em>Why today: After 2 days of "what changed", partner may feel anxious. This says: breathe, you have time.</em>
+      </div>
+    </div>
+    <div class="day-row">
+      <div><div class="day-num">Day 4-5</div><div class="day-date">08-09/04/26</div></div>
+      <div class="day-content">
+        <strong>App Transition Instructions</strong> <span class="contextual-tag">CONTEXTUAL</span><br>
+        New app is coming tomorrow/today. Download link / update instructions. Delete old app if applicable.<br><br>
+        <em>Format: WA + SMS (deep link) + Old app redirect screen.</em><br>
+        <em>Why now: Practical instruction right before launch. Not earlier — too early creates "download and wait" confusion.</em>
+      </div>
+    </div>
+  </div>
+
+  <div class="highlight" style="margin-top:16px;">
+    <strong>What is NOT said in Phase 1:</strong> No individual device counts (can't show on old app). No quality score details (measurement hasn't started). No bonus projections (no data yet). No "open app to see your state" (new app isn't live yet). Only rules, structure, and timeline.
+  </div>
+</div>
+
+<!-- PHASE 2 -->
+<div class="phase-card">
+  <div class="phase-label" style="color:#E8751A;">Phase 2 — Launch Day</div>
+  <div class="phase-title">Personalisation Starts — CSP Meets Their Reality</div>
+  <div class="phase-dates">10/04/26</div>
+  <p><strong>New app goes live.</strong> Old app blocked — redirects to new app.<br>
+  <strong>Mode:</strong> Personalised. CSP sees their individual data for the first time.<br>
+  <strong>Goal:</strong> Partner is on the new app, sees their state, and starts working (tickets).</p>
+
+  <div style="margin-top:16px;">
+    <div class="day-row">
+      <div><div class="day-num">Launch</div><div class="day-date">10/04/26</div></div>
+      <div class="day-content">
+        <strong>App is Live + First Open Experience</strong><br>
+        <strong>WA:</strong> "Naya app live hai" with deep link to open app. Trust Line number.<br>
+        <strong>Old app:</strong> Blocked. Opens to "yeh app band hai — naya app kholein" redirect.<br>
+        <strong>New app first open:</strong> Popup/overlay showing:
+        <ul style="margin-top:4px; padding-left:18px;">
+          <li>Their earning structure (rate card — now with real numbers tied to their account)</li>
+          <li>Their device status (active vs idle — first time seeing individual counts)</li>
+          <li>How the app works — tickets, earnings, devices all live here now</li>
+        </ul>
+        After popup dismissed: regular dashboard with tickets on top.<br><br>
+        <em>This is the moment declaration becomes reality. Everything said in Phase 1 now has numbers attached.</em>
+      </div>
+    </div>
+  </div>
+
+  <div class="highlight" style="margin-top:16px;">
+    <strong>The shift:</strong> Phase 1 said "idle devices will cost ₹2/day." Phase 2 shows "you have 2 idle devices — ₹2/day is accruing." Same rule, now personal. This is why we didn't show device counts earlier — old app couldn't, and showing wrong numbers destroys trust faster than showing no numbers.
+  </div>
+</div>
+
+<!-- PHASE 3 -->
+<div class="phase-card">
+  <div class="phase-label" style="color:#2EAD6B;">Phase 3 — Post-Launch</div>
+  <div class="phase-title">Trigger-Based — Respond to Partner's Reality</div>
+  <div class="phase-dates">Day 3 post-launch – 30/04/26</div>
+  <p><strong>Mode:</strong> Trigger-based, not calendar-based. Each message fires on a condition — not a date.<br>
+  <strong>Goal:</strong> Partner understands their individual performance, takes action, and sees their first bonus with full context.</p>
+
+  <div style="margin-top:16px;">
+    <div class="day-row">
+      <div><div class="day-num">Day 3-5</div><div class="day-date">~13-15/04</div></div>
+      <div class="day-content">
+        <strong>Telemetry → Bonus Connection</strong><br>
+        <em>Trigger: Telemetry status = Pending only.</em><br>
+        Partner now knows what bonus is (from Phase 1 + launch day rate card). Now connect: "telemetry installation required for bonus eligibility."<br>
+        <em>Why now and not earlier: the consequence has meaning only after the context exists.</em>
+      </div>
+    </div>
+    <div class="day-row">
+      <div><div class="day-num">Day 7-10</div><div class="day-date">~17-20/04</div></div>
+      <div class="day-content">
+        <strong>Quality Score Check</strong><br>
+        <em>Trigger: First bonus cycle is active.</em><br>
+        "Check your quality score — see what's helping and hurting." Multi-channel: WA + in-app banner + push for inactive.<br>
+        <em>Product dependency: quality score screen must be live.</em>
+      </div>
+    </div>
+    <div class="day-row">
+      <div><div class="day-num">Day 14</div><div class="day-date">~24/04</div></div>
+      <div class="day-content">
+        <strong>Protection Close-out</strong><br>
+        <em>Trigger: Calendar — all partners.</em><br>
+        "Enforcement starts 01/05. This is the time to adjust." Closes the Phase 1 protection promise with a specific date.
+      </div>
+    </div>
+    <div class="day-row">
+      <div><div class="day-num">Day 20-22</div><div class="day-date">~30/04-02/05</div></div>
+      <div class="day-content">
+        <strong>Pre-Bonus Nudge</strong><br>
+        <em>Trigger: Bonus cycle closing window.</em><br>
+        "Cycle closing — check projected bonus. Last chance to fix issues."<br>
+        <em>Product dependency: projected bonus screen must be live. Most important post-launch message.</em>
+      </div>
+    </div>
+    <div class="day-row">
+      <div><div class="day-num">Month End</div><div class="day-date">~01/05/26+</div></div>
+      <div class="day-content">
+        <strong>Bonus Credited</strong><br>
+        <em>Trigger: System event — bonus calculated.</em><br>
+        Full itemised breakdown: connections, bonus tier, collections, deductions, total. If not paid: reason shown explicitly.<br>
+        <em>Non-negotiable: every rupee accounted for. No lump sums.</em>
+      </div>
+    </div>
+  </div>
+
+  <div class="highlight" style="margin-top:16px;">
+    <strong>What is NOT in Phase 3:</strong> No re-education on "what changed" (Phase 1 did that). No re-explanation of rate card (it's permanently in the app). Phase 3 is purely about the partner's individual reality — their score, their bonus, their actions.
+  </div>
+</div>
+
+<!-- PHASE 4 -->
+<div class="phase-card">
+  <div class="phase-label" style="color:#7B1FA2;">Ongoing — Contextual Education</div>
+  <div class="phase-title">Behaviour-Triggered, Always Available</div>
+  <div class="phase-dates">Continuous</div>
+  <p>Education doesn't end at month-end. But it's never calendar-blasted again. It surfaces based on what the partner does or doesn't do.</p>
+
+  <div style="margin-top:12px;">
+    <table class="boundary-table">
+      <tr><th>Trigger</th><th>What surfaces</th></tr>
+      <tr><td>Quality score drops</td><td>Specific tips tied to their data — "2 idle devices, 1 open issue"</td></tr>
+      <tr><td>Performing well</td><td>Reinforcement — "connections stable, issues resolved on time"</td></tr>
+      <tr><td>After bonus (below expectation)</td><td>Improvement tips tied to the specific reason for low bonus</td></tr>
+      <tr><td>Before enforcement (01/05)</td><td>At-risk partners get actionable tips on compliance screen</td></tr>
+      <tr><td>Partner visits Paathshala</td><td>All education modules, videos, rate card, guides — always available</td></tr>
+    </table>
+  </div>
+</div>
+
+<!-- ==================== SUMMARY ==================== -->
+<h2>Summary — The Boundary Lines</h2>
+<div class="card">
+  <table class="boundary-table">
+    <tr><th style="width:200px;">Line</th><th>Rule</th></tr>
+    <tr><td><strong>Before 05/04: Operational only</strong></td><td>No system mentions. Telemetry installation only.</td></tr>
+    <tr><td><strong>05/04 – 09/04: Declaration</strong></td><td>Old app popups + WA redirect. Static content. Rules and structure only. No individual data. 1 blocker on Day 1.</td></tr>
+    <tr><td><strong>10/04 onwards: Personalisation</strong></td><td>New app. CSP-specific data. Trigger-based. No calendar-blasting education.</td></tr>
+    <tr><td><strong>Old app = same for all</strong></td><td>Cannot show CSP-specific data. Declaration mode only.</td></tr>
+    <tr><td><strong>New app = different for each</strong></td><td>Individual state, devices, score, bonus. Primary interface.</td></tr>
+    <tr><td><strong>WA/SMS = redirect only</strong></td><td>Never the education. Always points to app or video.</td></tr>
+    <tr><td><strong>1 blocker, rest contextual</strong></td><td>Blocker on 05/04 only. Everything after is available but not forced.</td></tr>
+    <tr><td><strong>Don't tell what can't be seen</strong></td><td>No device counts before app live. No score before measurement. No bonus before screen exists.</td></tr>
+    <tr><td><strong>All content has a permanent home</strong></td><td>Rate card → Earnings section. Everything else → Wiom Paathshala.</td></tr>
+  </table>
+</div>
+
+<div style="text-align: center; padding: 20px; font-size: 12px; color: #999;">
+  Wiom Internal &nbsp;|&nbsp; CSP Migration Framework &nbsp;|&nbsp; v1.0
+</div>
+
+</body>
+</html>
