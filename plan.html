@@ -175,34 +175,46 @@
     </div>
   </div>
   <div class="day-body">
-    <p style="font-size:13px; color:#444;"><strong>What happens:</strong> All section popups are planted. Whichever section the partner visits first — that popup fires.</p>
+    <p style="font-size:13px; color:#444;"><strong>What happens:</strong> All section popups are planted. Whichever section the partner (OWNER only, not technicians) visits first — that popup fires.</p>
+
+    <div class="hl" style="margin:12px 0;">
+      <strong>Confirmed priority order (by visit frequency):</strong><br>
+      <strong>#1 Dashboard</strong> (most visited — landing page) → <strong>#2 Wallet</strong> (money check) → <strong>#3 Tickets</strong> (work)<br><br>
+      This means most partners will first see the Dashboard popup. Those who go straight to Wallet or Tickets will see the section-specific education first. Either way, they're primed for the blocker on Day 2.
+    </div>
 
     <table class="tbl" style="margin-top:12px;">
-      <tr><th>Section</th><th>Popup content (connected to system reboot narrative)</th></tr>
+      <tr><th>Priority</th><th>Section</th><th>Popup content (connected to system reboot narrative)</th></tr>
       <tr>
+        <td><strong>#1</strong></td>
+        <td><span class="section-tag st-home">Dashboard</span></td>
+        <td><strong>Wiom ka system badal raha hai.</strong><br>Kaam, kamai, devices, aur customer plans — sab mein badlaav aa raha hai. Wallet aur Tickets mein jaake details dekhein. Puri picture kal milegi.</td>
+      </tr>
+      <tr>
+        <td><strong>#2</strong></td>
         <td><span class="section-tag st-wallet">Wallet</span></td>
-        <td><strong>Wiom ka system badal raha hai — aur aapki kamai ka tarika bhi.</strong><br>₹300/connection same. Bonus ab monthly, quality basis, up to ₹120. Puri picture jald milegi.</td>
+        <td><strong>Wiom ka system badal raha hai — aur aapki kamai ka tarika bhi.</strong><br>₹300/connection same. Bonus ab monthly, quality basis, up to ₹120. Puri picture kal milegi.</td>
       </tr>
       <tr>
+        <td><strong>#3</strong></td>
         <td><span class="section-tag st-tickets">Tickets</span></td>
-        <td><strong>Wiom ka system badal raha hai — aur kaam ka tarika bhi.</strong><br>Jo ticket solve kar rahe hain — naye system mein yeh quality count hogi. Connections system se aayengi. Puri picture jald milegi.</td>
+        <td><strong>Wiom ka system badal raha hai — aur kaam ka tarika bhi.</strong><br>Jo ticket solve kar rahe hain — naye system mein yeh quality count hogi. Connections system se aayengi. Puri picture kal milegi.</td>
       </tr>
       <tr>
+        <td>—</td>
         <td><span class="section-tag st-earnings">Earnings</span></td>
-        <td><strong>Wiom ka system badal raha hai — earning ka structure bhi naya hoga.</strong><br>₹300 same. Bonus up to ₹120/month, 5 quality factors. Puri picture jald milegi.</td>
+        <td><strong>Wiom ka system badal raha hai — earning ka structure bhi naya hoga.</strong><br>₹300 same. Bonus up to ₹120/month, 5 quality factors. Puri picture kal milegi.</td>
       </tr>
       <tr>
+        <td>—</td>
         <td><span class="section-tag st-netbox">Asset / NetBox</span></td>
-        <td><strong>Wiom ka system badal raha hai — devices ke rules bhi.</strong><br>15+ din idle = ₹2/day. Return = ₹50. ₹200 deposit — sahi return par wapas. Details naye app mein. Puri picture jald milegi.</td>
-      </tr>
-      <tr>
-        <td><span class="section-tag st-home">Home</span></td>
-        <td><strong>Wiom ka system badal raha hai.</strong><br>Kaam, kamai, devices, customer plans — sab badal raha hai. Sections mein jaake details dekhein.</td>
+        <td><strong>Wiom ka system badal raha hai — devices ke rules bhi.</strong><br>15+ din idle = ₹2/day. Return = ₹50. ₹200 deposit — sahi return par wapas. Details naye app mein. Puri picture kal milegi.</td>
       </tr>
     </table>
 
     <div class="logic-box" style="margin-top:12px;">
-      <strong>Every popup ends with "puri picture jald milegi"</strong> — this primes the partner for the blocker coming on Day 2. The contextual popup is the appetiser. The blocker is the main course.
+      <strong>Every popup ends with "puri picture kal milegi"</strong> — this primes the partner for the blocker coming on Day 2. The contextual popup is the appetiser. The blocker is the main course.<br><br>
+      <strong>Note:</strong> This applies to Partners (OWNER role) only. Technicians/ADMINs are excluded from the migration education flow.
     </div>
 
     <div class="hl-pink" style="margin-top:12px;">
@@ -508,13 +520,16 @@
     </tr>
   </table>
 
-  <div class="hl" style="margin-top:16px;">
-    <strong>Also needed (from earlier):</strong><br>
-    <strong>Section visit frequency</strong> — which section partners open most (CleverTap screen events). This determines which contextual popup has the highest probability of being the first touch on Day 1. If Wallet is #1, earning education fires first. If Tickets is #1, work/quality fires first.
+  <div class="hl-green" style="margin-top:16px;">
+    <strong>Confirmed (from data):</strong><br>
+    <strong>Section visit frequency:</strong> #1 Dashboard → #2 Wallet → #3 Tickets<br>
+    <strong>Daily active partners (OWNER):</strong> ~1,400-1,460 unique partners open the app daily<br>
+    <strong>Avg opens per partner:</strong> ~17 times/day — high engagement, multiple touchpoints per day<br>
+    <strong>Audience:</strong> OWNER role only. Technicians/ADMINs excluded from migration education.
   </div>
 
   <div class="hl-red" style="margin-top:12px;">
-    <strong>Without this data, the plan degrades to:</strong> "Send WA on Day 1, blocker on Day 2, WA on Day 3..." — which is just calendar-blasting with extra steps. The data is what makes it intelligent. <strong>Priority: confirm CleverTap can track these 6 events.</strong>
+    <strong>Still needed from product:</strong> Confirm CleverTap can track the 6 state events above (contextual_seen, blocker_completed, video_watched, quiz_passed etc.). Without state tracking, the plan degrades to calendar-blasting.
   </div>
 </div>
 
