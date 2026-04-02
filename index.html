@@ -274,7 +274,7 @@
       <div class="phase-line"></div>
     </div>
 
-    <!-- MSG 01 -->
+    <!-- MSG 01 — PNM Alert -->
     <div class="msg-card phase-pre" data-phase="pre">
       <div class="msg-card-top" onclick="toggleCard(this)">
         <div class="msg-num">01</div>
@@ -291,9 +291,19 @@
       <div class="msg-detail">
         <div class="detail-grid">
           <div>
-            <div class="detail-section"><div class="detail-label">Intent</div><div class="detail-text">Get partner to allow technician visit. Operational ask — confirm a slot.</div></div>
-            <div class="detail-section"><div class="detail-label">Why this format</div><div class="detail-text">Simple operational ask = text WA is sufficient. Call follow-up confirms slot. SMS cascade at 24hrs for unread WA.</div></div>
-            <div class="detail-section"><div class="detail-label">Design Note</div><div class="detail-text">Bonus consequence deliberately excluded — partner doesn't know bonus structure yet. Connected at Day 3-5.</div></div>
+            <div class="detail-section"><div class="detail-label">Intent</div><div class="detail-text">Get partner to allow technician visit for monitoring device installation at their office.</div></div>
+            <div class="detail-section"><div class="detail-label">Trigger</div><div class="detail-text">Calendar — all partners.</div></div>
+            <div class="detail-section"><div class="detail-label">Content</div><div class="detail-text">
+              <ol style="padding-left:18px; margin:0;">
+                <li>Wiom will install a monitoring device at your office</li>
+                <li>A technician will call to schedule the visit</li>
+                <li>Installation takes 15-20 minutes</li>
+                <li>Keep a power socket ready near the OLT</li>
+                <li>Keep the device running after installation</li>
+              </ol>
+            </div></div>
+            <div class="detail-section"><div class="detail-label">Suggested Format</div><div class="detail-text">WhatsApp text + Call follow-up to confirm slot. SMS cascade at 24hrs for unread WA.</div></div>
+            <div class="detail-section"><div class="detail-label">Note</div><div class="detail-text">Bonus consequence excluded — partner doesn't know bonus structure yet. Connected at Day 3-5.</div></div>
           </div>
           <div>
             <div class="detail-label">WhatsApp Preview</div>
@@ -301,8 +311,12 @@
               <div class="wa-label">Wiom Network Update</div>
               <div class="wa-bubble">
                 <div class="wa-title">Wiom Network Update</div>
-                <strong>क्यों</strong><br>Network monitor करने से customers की दिक्कतें जल्दी पकड़ में आती हैं। Wiom आपके office में एक monitoring device install करेगा।<br><br>
-                <strong>आपको क्या करना है</strong><br>Call आने पर visit का समय confirm करें। OLT के पास power socket के साथ जगह रखें।
+                Wiom आपके office में एक monitoring device install करेगा।<br><br>
+                <strong>आपको क्या करना है:</strong><br>
+                1. Technician की call आने पर visit का समय confirm करें<br>
+                2. OLT के पास power socket तैयार रखें<br>
+                3. Installation में 15-20 min लगेंगे<br>
+                4. Installation के बाद device चालू रखें
                 <div class="wa-time">9:00 AM ✓✓</div>
               </div>
             </div>
@@ -311,7 +325,7 @@
       </div>
     </div>
 
-    <!-- MSG 02 -->
+    <!-- MSG 02 — M2b Carry Fee -->
     <div class="msg-card phase-pre" data-phase="pre">
       <div class="msg-card-top" onclick="toggleCard(this)">
         <div class="msg-num">02</div>
@@ -328,8 +342,17 @@
       <div class="msg-detail">
         <div class="detail-grid">
           <div>
-            <div class="detail-section"><div class="detail-label">Intent</div><div class="detail-text">Declare the carry fee policy before app goes live. No action needed — partner just knows this exists. Individual device counts come in the app.</div></div>
-            <div class="paathshala-box"><strong>Wiom Paathshala</strong><p>Carry fee policy permanently accessible in Wiom Paathshala > Device Management section.</p></div>
+            <div class="detail-section"><div class="detail-label">Intent</div><div class="detail-text">Declare carry fee policy before app goes live so partner is not surprised when they see it in the new app.</div></div>
+            <div class="detail-section"><div class="detail-label">Trigger</div><div class="detail-text">Calendar — all partners.</div></div>
+            <div class="detail-section"><div class="detail-label">Content</div><div class="detail-text">
+              <ol style="padding-left:18px; margin:0;">
+                <li>Any NetBox idle for 15+ days will incur ₹2/day carry fee</li>
+                <li>Full device-wise details will show in the new app after launch</li>
+              </ol>
+            </div></div>
+            <div class="detail-section"><div class="detail-label">Suggested Format</div><div class="detail-text">WhatsApp only — text declaration. No action required from partner.</div></div>
+            <div class="detail-section"><div class="detail-label">Note</div><div class="detail-text">Individual device counts intentionally not shared yet — avoids alternate truth source before app is live.</div></div>
+            <div class="paathshala-box"><strong>Wiom Paathshala</strong><p>Device Management section.</p></div>
           </div>
           <div>
             <div class="detail-label">WhatsApp Preview</div>
@@ -345,7 +368,7 @@
       </div>
     </div>
 
-    <!-- MSG 03 -->
+    <!-- MSG 03 — M3 Protection -->
     <div class="msg-card phase-pre" data-phase="pre">
       <div class="msg-card-top" onclick="toggleCard(this)">
         <div class="msg-num">03</div>
@@ -362,8 +385,18 @@
       <div class="msg-detail">
         <div class="detail-grid">
           <div>
-            <div class="detail-section"><div class="detail-label">Intent</div><div class="detail-text">Reassure: you'll have time to adjust. No surprises on day one. Sets up the psychological safety net before launch.</div></div>
-            <div class="detail-section"><div class="detail-label">Design Note</div><div class="detail-text">Date deliberately omitted — "launch hone wala hai" used. Reinstate only if date locks.</div></div>
+            <div class="detail-section"><div class="detail-label">Intent</div><div class="detail-text">Reassure partner they'll have time to adjust — no surprises on day one.</div></div>
+            <div class="detail-section"><div class="detail-label">Trigger</div><div class="detail-text">Calendar — all partners.</div></div>
+            <div class="detail-section"><div class="detail-label">Content</div><div class="detail-text">
+              <ol style="padding-left:18px; margin:0;">
+                <li>New system is launching soon</li>
+                <li>Initial focus is understanding and setup only</li>
+                <li>Your state and next steps will be in the new app</li>
+                <li>You'll have time to understand and adjust</li>
+              </ol>
+            </div></div>
+            <div class="detail-section"><div class="detail-label">Suggested Format</div><div class="detail-text">WhatsApp only — text declaration.</div></div>
+            <div class="detail-section"><div class="detail-label">Note</div><div class="detail-text">Date deliberately omitted — "launch hone wala hai" used. Reinstate if date locks.</div></div>
           </div>
           <div>
             <div class="detail-label">WhatsApp Preview</div>
@@ -380,7 +413,7 @@
       </div>
     </div>
 
-    <!-- MSG 04 — System Reboot + PayG (merged) -->
+    <!-- MSG 04 — System Reboot + PayG (THE BIG ONE) -->
     <div class="msg-card phase-pre" data-phase="pre">
       <div class="msg-card-top" onclick="toggleCard(this)">
         <div class="msg-num">04</div>
@@ -390,6 +423,7 @@
             <span class="tag tag-date">Apr 4–5</span>
             <span class="tag tag-channel">WA + SMS + Old App</span>
             <span class="tag tag-format">Video + Interactive Quiz</span>
+            <span class="tag tag-flag">THE BIG ONE</span>
             <span class="tag tag-paathshala">Wiom Paathshala</span>
           </div>
         </div>
@@ -398,15 +432,50 @@
       <div class="msg-detail">
         <div class="detail-grid">
           <div>
-            <div class="detail-section"><div class="detail-label">Intent</div><div class="detail-text">This is the single most important pre-launch education moment. The partner needs to understand: (1) earning structure changed, (2) work comes from system, (3) customers now take PayG plans — all before they open the new app. Text alone won't land this.</div></div>
-            <div class="format-rec">
-              <strong>Format: Explainer Video (2-3 min) + Quiz Gate</strong>
-              <p><strong>Video</strong> covers the new system AND PayG together — they're part of the same story: "the way customers use Wiom has changed (PayG), and the way you work and earn has changed too." This is hosted on the old app.<br><br>
-              <strong>Quiz</strong> follows the video — same format that worked for earlier PayG education. Partner must complete quiz to show they understood. Quiz gate ensures comprehension, not just views.<br><br>
-              <strong>WA + SMS</strong> are just the redirect — "yeh video dekhein, old app mein" with deep link to old app.</p>
-            </div>
+            <div class="detail-section"><div class="detail-label">Intent</div><div class="detail-text">The single most important pre-launch education moment. Partner must understand the full new operating model before opening the new app.</div></div>
+            <div class="detail-section"><div class="detail-label">Trigger</div><div class="detail-text">Calendar — all partners (after M3, before launch).</div></div>
+            <div class="detail-section"><div class="detail-label">Content</div><div class="detail-text">
+              <strong style="color:#4A90D9;">Block A: Work Allocation (how you get work)</strong>
+              <ol style="padding-left:18px; margin:4px 0 12px;">
+                <li>Connections now come directly from the system — mandatory to install</li>
+                <li>No manual interventions — everything through the app</li>
+                <li>System assigns work based on your performance</li>
+                <li>Better performance = more work. Lower performance = less work</li>
+                <li>App is essential — this is where tickets, installations, and service requests come</li>
+              </ol>
+
+              <strong style="color:#E8751A;">Block B: Earning Structure (how you earn)</strong>
+              <ol style="padding-left:18px; margin:4px 0 4px;">
+                <li>₹300 per connection install — this remains the same</li>
+                <li>Performance bonus: up to ₹120/month — now depends on quality:
+                  <ul style="padding-left:16px; margin:4px 0;">
+                    <li>Connection uptime (most important)</li>
+                    <li>Speed / performance quality</li>
+                    <li>Issue resolution timeliness</li>
+                    <li>Repeat issues / complaints</li>
+                    <li>Installation quality</li>
+                  </ul>
+                </li>
+                <li>NetBox economics:
+                  <ul style="padding-left:16px; margin:4px 0;">
+                    <li>₹2/day carry fee for any device idle 15+ days</li>
+                    <li>₹50 for collecting/returning a NetBox</li>
+                    <li>₹200 security deposit taken when device issued — returned in full if device returned properly. If not returned or damaged, adjusted against liability.</li>
+                  </ul>
+                </li>
+              </ol>
+
+              <strong style="color:#2EAD6B;">Block C: PayG — How customers now use Wiom</strong>
+              <ol style="padding-left:18px; margin:4px 0 0;">
+                <li>Customers can now recharge as per their need — this is NOT monthly plans</li>
+                <li>They buy as much as they want (daily, weekly, etc.)</li>
+                <li>Your responsibility: ensure 30-day ISP recharge for all connections</li>
+                <li>How customer recharges and plans work from your side</li>
+              </ol>
+            </div></div>
+            <div class="detail-section"><div class="detail-label">Suggested Format</div><div class="detail-text">Explainer video (2-3 min) + quiz gate on old app. WA + SMS redirect to old app where video is hosted. Quiz follows video — same format that worked for PayG earlier.</div></div>
+            <div class="detail-section"><div class="detail-label">Note</div><div class="detail-text">Delhi and Bharat/Mumbai may be treated separately. Content moves to Wiom Paathshala in new app after launch.</div></div>
             <div class="paathshala-box"><strong>Wiom Paathshala</strong><p>Video + quiz module moves to Wiom Paathshala in new app after launch. Permanently accessible for revisit.</p></div>
-            <div class="detail-section" style="margin-top:12px;"><div class="detail-label">Design Note</div><div class="detail-text">Partners must not open new app cold. This primes the mental model 2-3 days before launch. Delhi and Bharat/Mumbai can be treated separately if content differs.</div></div>
           </div>
           <div>
             <div class="detail-label">Channel 1: WhatsApp</div>
@@ -482,8 +551,18 @@
       <div class="msg-detail">
         <div class="detail-grid">
           <div>
-            <div class="detail-section"><div class="detail-label">Intent</div><div class="detail-text">Get new app on the partner's phone. This is the prerequisite for everything else. Must be crystal clear: one link to click. Old app also shows a full-screen redirect card.</div></div>
-            <div class="detail-section"><div class="detail-label">Open Question</div><div class="detail-text" style="color:#E65100;">Is this an update to the existing app or a new download? Determines the instruction. Placeholder content below.</div></div>
+            <div class="detail-section"><div class="detail-label">Intent</div><div class="detail-text">Get the new app on partner's phone — prerequisite for everything.</div></div>
+            <div class="detail-section"><div class="detail-label">Trigger</div><div class="detail-text">Calendar — launch day, all partners.</div></div>
+            <div class="detail-section"><div class="detail-label">Content</div><div class="detail-text">
+              <ol style="padding-left:18px; margin:0;">
+                <li>New Wiom App is ready</li>
+                <li>Download from link / update existing app</li>
+                <li>Delete old app [if applicable]</li>
+                <li>Open new app — your data is there</li>
+              </ol>
+            </div></div>
+            <div class="detail-section"><div class="detail-label">Suggested Format</div><div class="detail-text">WhatsApp + SMS + Old App redirect screen.</div></div>
+            <div class="detail-section"><div class="detail-label">Note</div><div class="detail-text" style="color:#E65100;">Open question — is it new download or update? Placeholder content.</div></div>
           </div>
           <div>
             <div class="detail-label">Channel 1: WhatsApp</div>
@@ -522,7 +601,7 @@
       </div>
     </div>
 
-    <!-- MSG 06 — D0 App is Live -->
+    <!-- MSG 06 — D0 App Live -->
     <div class="msg-card phase-launch" data-phase="launch">
       <div class="msg-card-top" onclick="toggleCard(this)">
         <div class="msg-num">06</div>
@@ -540,9 +619,19 @@
       <div class="msg-detail">
         <div class="detail-grid">
           <div>
-            <div class="detail-section"><div class="detail-label">Intent</div><div class="detail-text">Get partner to open the new app and see their state. Old app is now blocked — opening it shows a redirect screen to the new app. This ensures no partner stays on the old app.</div></div>
-            <div class="detail-section"><div class="detail-label">App Screen Required</div><div class="app-screen-tag">Dashboard: state, ₹300 rate, pending tickets, Trust Line</div></div>
-            <div class="detail-section"><div class="detail-label">Old App Behaviour</div><div class="detail-text">Old app is <strong>blocked from this point</strong>. Any partner who opens it sees only a full-screen redirect to download/open the new app. No old app functionality remains.</div></div>
+            <div class="detail-section"><div class="detail-label">Intent</div><div class="detail-text">Get partner to open new app and see their state. Old app is now blocked.</div></div>
+            <div class="detail-section"><div class="detail-label">Trigger</div><div class="detail-text">Calendar — after download message, all partners.</div></div>
+            <div class="detail-section"><div class="detail-label">Content</div><div class="detail-text">
+              <ol style="padding-left:18px; margin:0;">
+                <li>New app is live</li>
+                <li>Your state, tickets, and next steps are in the app</li>
+                <li>₹300 per connection continues</li>
+                <li>Trust Line number for questions</li>
+                <li>Old app is blocked — redirects to new app</li>
+              </ol>
+            </div></div>
+            <div class="detail-section"><div class="detail-label">Suggested Format</div><div class="detail-text">WhatsApp with app deep link + Old App blocked screen with redirect.</div></div>
+            <div class="detail-section"><div class="detail-label">Note</div><div class="detail-text">Job is ONLY to drive app opens — app does the explaining.</div></div>
           </div>
           <div>
             <div class="detail-label">Channel 1: WhatsApp</div>
@@ -574,7 +663,7 @@
       </div>
     </div>
 
-    <!-- MSG 07 — Launch Day App (progressive) -->
+    <!-- MSG 07 — Launch Day App Experience -->
     <div class="msg-card phase-launch" data-phase="launch">
       <div class="msg-card-top" onclick="toggleCard(this)">
         <div class="msg-num">07</div>
@@ -592,13 +681,19 @@
       <div class="msg-detail">
         <div class="detail-grid">
           <div>
-            <div class="detail-section"><div class="detail-label">Intent</div><div class="detail-text">When partner opens the app, the primary view is their <strong>work queue</strong> (tickets). The earning and device information surfaces as secondary cards — not competing with the primary workflow.</div></div>
-            <div class="detail-section"><div class="detail-label">Progressive disclosure — not information dump</div><div class="detail-text">Instead of showing rate card + device tracking + everything at once:<br><br>
-              <strong>First screen:</strong> Dashboard with pending tickets (primary), a summary card showing "₹300/connection | Bonus: up to ₹120" with "Details dekhein" link.<br><br>
-              <strong>Rate Card (tap to expand):</strong> Full breakdown only when partner taps. Stays prominent for 7 days, then permanent in Earnings section.<br><br>
-              <strong>Device alert (only if idle devices exist):</strong> Small alert card — "2 idle devices — ₹2/day carry fee". Tap for details. Not shown if all devices are active.</div>
-            </div>
-            <div class="paathshala-box"><strong>Permanent home</strong><p>Rate card: Earnings section (always). Device info: Device Management. Both also in Wiom Paathshala.</p></div>
+            <div class="detail-section"><div class="detail-label">Intent</div><div class="detail-text">What partner sees when they first open the new app — progressive, not overwhelming.</div></div>
+            <div class="detail-section"><div class="detail-label">Trigger</div><div class="detail-text">Partner opens new app.</div></div>
+            <div class="detail-section"><div class="detail-label">Content</div><div class="detail-text">
+              <ol style="padding-left:18px; margin:0;">
+                <li><strong>Primary view:</strong> pending work (installation requests + service tickets)</li>
+                <li><strong>Earnings summary card:</strong> "₹300/connection + Bonus up to ₹120" — tap for full rate card</li>
+                <li><strong>Device alert card:</strong> only shown if partner has idle devices — "X idle devices, ₹2/day carry fee"</li>
+                <li><strong>Rate card detail:</strong> available on tap — stays prominent 7 days, then Earnings section permanently</li>
+              </ol>
+            </div></div>
+            <div class="detail-section"><div class="detail-label">Suggested Format</div><div class="detail-text">Progressive dashboard cards in new app.</div></div>
+            <div class="detail-section"><div class="detail-label">Note</div><div class="detail-text">Tickets on top — that's the hook. Earnings and devices are secondary.</div></div>
+            <div class="paathshala-box"><strong>Wiom Paathshala</strong><p>Rate card in Earnings, device info in Device Management.</p></div>
           </div>
           <div>
             <div class="detail-label">What Partner Actually Sees (Progressive)</div>
@@ -651,7 +746,7 @@
       <div class="phase-line"></div>
     </div>
 
-    <!-- MSG 08 — Telemetry -->
+    <!-- MSG 08 — Telemetry Nudge -->
     <div class="msg-card phase-post" data-phase="post" data-trigger="true">
       <div class="msg-card-top" onclick="toggleCard(this)">
         <div class="msg-num">08</div>
@@ -669,16 +764,26 @@
       <div class="msg-detail">
         <div class="detail-grid">
           <div>
-            <div class="detail-section"><div class="detail-label">Intent</div><div class="detail-text">Connect telemetry installation to bonus eligibility. Partner now knows what bonus is (from rate card) — right moment to state the consequence.</div></div>
-            <div class="trigger-box"><strong>Trigger: Only partners with telemetry status = Pending</strong><p>Not blasted to all. If device already scheduled or installed, they don't get this.</p></div>
-            <div class="detail-section" style="margin-top:10px;"><div class="detail-label">App Screen Required</div><div class="app-screen-tag">Telemetry status: Pending / Scheduled / Installed</div></div>
+            <div class="detail-section"><div class="detail-label">Intent</div><div class="detail-text">Now that partner knows the bonus structure, connect telemetry installation to bonus eligibility.</div></div>
+            <div class="detail-section"><div class="detail-label">Trigger</div><div class="detail-text">Only partners with telemetry status = Pending (not all partners).</div></div>
+            <div class="detail-section"><div class="detail-label">Content</div><div class="detail-text">
+              <ol style="padding-left:18px; margin:0;">
+                <li>Your telemetry device installation is still pending</li>
+                <li>This is required for bonus eligibility</li>
+                <li>The sooner it's installed, the better</li>
+                <li>Wait for the call — confirm visit time</li>
+                <li>Check installation status in app</li>
+              </ol>
+            </div></div>
+            <div class="detail-section"><div class="detail-label">Suggested Format</div><div class="detail-text">WhatsApp text.</div></div>
+            <div class="detail-section"><div class="detail-label">Note</div><div class="detail-text">Product dependency — telemetry status card must be live in app. Only sent to Pending status partners.</div></div>
           </div>
           <div>
             <div class="detail-label">WhatsApp Preview</div>
             <div class="wa-preview">
               <div class="wa-bubble">
                 Wiom monitoring device की installation अभी बाकी है।<br><br>
-                यह installation आपकी <strong>bonus eligibility</strong> के लिए ज़रूरी है।<br><br>
+                यह installation आपकी <strong>bonus eligibility</strong> के लिए ज़रूरी है। जितनी जल्दी installation होगा, उतना अच्छा।<br><br>
                 Call आने पर visit का समय confirm करें।<br>App में अपनी installation status देखें।
                 <div class="wa-time">10:00 AM ✓✓</div>
               </div>
@@ -707,15 +812,19 @@
       <div class="msg-detail">
         <div class="detail-grid">
           <div>
-            <div class="detail-section"><div class="detail-label">Intent</div><div class="detail-text">Make partner aware they're being measured. Create urgency to check their quality score while there's time to improve. "Quality score" is the new system's performance metric — distinct from the old customer rating.</div></div>
-            <div class="format-rec">
-              <strong>Multi-channel (per PCA)</strong>
-              <p><strong>WhatsApp:</strong> One-time nudge with deep link to app.<br>
-              <strong>In-App Banner:</strong> Persistent top banner for 3 days: "पहला bonus cycle चल रहा है — अपना score देखें"<br>
-              <strong>Push:</strong> For partners who haven't opened app in 48hrs.</p>
-            </div>
-            <div class="detail-section" style="margin-top:10px;"><div class="detail-label">Blocker</div><div class="detail-text" style="color:#C62828; font-weight:600;">Quality score screen MUST be live before this goes out.</div></div>
-            <div class="detail-section"><div class="detail-label">App Screen Required</div><div class="app-screen-tag">Quality Score: live score, what's helping/hurting, projected bonus tier</div></div>
+            <div class="detail-section"><div class="detail-label">Intent</div><div class="detail-text">Make partner aware they're being measured — create urgency to check and improve while there's time.</div></div>
+            <div class="detail-section"><div class="detail-label">Trigger</div><div class="detail-text">First bonus cycle active + calendar window.</div></div>
+            <div class="detail-section"><div class="detail-label">Content</div><div class="detail-text">
+              <ol style="padding-left:18px; margin:0;">
+                <li>Your first bonus cycle is active right now</li>
+                <li>Check your quality score in the app</li>
+                <li>See what's helping and hurting your score</li>
+                <li>Good performance this month = good first bonus</li>
+                <li>There's still time to improve</li>
+              </ol>
+            </div></div>
+            <div class="detail-section"><div class="detail-label">Suggested Format</div><div class="detail-text">Multi-channel — WhatsApp text + In-app persistent banner (3 days) + Push notification for inactive partners.</div></div>
+            <div class="detail-section"><div class="detail-label">Note</div><div class="detail-text">Product dependency — quality score screen must be live. "Quality score" not "rating" — avoids confusion with old customer rating.</div></div>
           </div>
           <div>
             <div class="detail-label">Channel 1: WhatsApp</div>
@@ -766,8 +875,18 @@
       <div class="msg-detail">
         <div class="detail-grid">
           <div>
-            <div class="detail-section"><div class="detail-label">Intent</div><div class="detail-text">Close the M3 promise explicitly. Partners were told they'd have time — this tells them exactly when protection ends. Clear before/after line at May 1.</div></div>
-            <div class="detail-section"><div class="detail-label">App Screen Required</div><div class="app-screen-tag">Compliance status: protection active, enforcement date May 1</div></div>
+            <div class="detail-section"><div class="detail-label">Intent</div><div class="detail-text">Close the M3 promise — tell partner exactly when protection ends.</div></div>
+            <div class="detail-section"><div class="detail-label">Trigger</div><div class="detail-text">Calendar — Day 14 post-launch.</div></div>
+            <div class="detail-section"><div class="detail-label">Content</div><div class="detail-text">
+              <ol style="padding-left:18px; margin:0;">
+                <li>Measurement window is currently active</li>
+                <li>Performance enforcement starts May 1</li>
+                <li>This is the time to understand and adjust</li>
+                <li>Check your state and quality score in the app</li>
+              </ol>
+            </div></div>
+            <div class="detail-section"><div class="detail-label">Suggested Format</div><div class="detail-text">WhatsApp + App compliance card.</div></div>
+            <div class="detail-section"><div class="detail-label">Note</div><div class="detail-text">Closes M3 explicitly. Partners were told they'd have time — this confirms when it ends.</div></div>
           </div>
           <div>
             <div class="detail-label">WhatsApp Preview</div>
@@ -802,9 +921,18 @@
       <div class="msg-detail">
         <div class="detail-grid">
           <div>
-            <div class="detail-section"><div class="detail-label">Intent</div><div class="detail-text">Partner must have context BEFORE seeing the bonus amount. Last chance to fix issues. Most important post-launch message.</div></div>
-            <div class="detail-section"><div class="detail-label">Blocker</div><div class="detail-text" style="color:#C62828; font-weight:600;">Projected bonus screen must be live. Without it, PTL call volume spikes at month end.</div></div>
-            <div class="detail-section"><div class="detail-label">App Screen Required</div><div class="app-screen-tag">Month summary: performance, projected bonus, disqualifying flags</div></div>
+            <div class="detail-section"><div class="detail-label">Intent</div><div class="detail-text">Partner must see projected bonus BEFORE the actual number — context before surprise.</div></div>
+            <div class="detail-section"><div class="detail-label">Trigger</div><div class="detail-text">Bonus cycle closing window.</div></div>
+            <div class="detail-section"><div class="detail-label">Content</div><div class="detail-text">
+              <ol style="padding-left:18px; margin:0;">
+                <li>First bonus cycle is closing soon</li>
+                <li>Check your performance and projected bonus in app</li>
+                <li>If there's an issue showing, this is the last chance to fix it</li>
+                <li>Review your month summary</li>
+              </ol>
+            </div></div>
+            <div class="detail-section"><div class="detail-label">Suggested Format</div><div class="detail-text">WhatsApp with deep link to month summary + Push notification.</div></div>
+            <div class="detail-section"><div class="detail-label">Note</div><div class="detail-text">Most important post-launch message. Product dependency — projected bonus screen must be live. Without it, PTL spikes.</div></div>
           </div>
           <div>
             <div class="detail-label">WhatsApp Preview</div>
@@ -839,9 +967,25 @@
       <div class="msg-detail">
         <div class="detail-grid">
           <div>
-            <div class="detail-section"><div class="detail-label">Intent</div><div class="detail-text">Every rupee accounted for. Full line-item breakdown. If bonus not paid, reason shown explicitly. Prevents "why less" PTL calls.</div></div>
-            <div class="trigger-box"><strong>Trigger: System event — bonus calculation complete</strong><p>Push notification fires. App opens to breakdown screen.</p></div>
-            <div class="detail-section" style="margin-top:10px;"><div class="detail-label">App Screen Required</div><div class="app-screen-tag">Full payout breakdown — every line itemised. Non-negotiable.</div></div>
+            <div class="detail-section"><div class="detail-label">Intent</div><div class="detail-text">Every rupee accounted for — prevent "why less" PTL calls.</div></div>
+            <div class="detail-section"><div class="detail-label">Trigger</div><div class="detail-text">System event — bonus calculation complete.</div></div>
+            <div class="detail-section"><div class="detail-label">Content</div><div class="detail-text">
+              <ol style="padding-left:18px; margin:0;">
+                <li>Your first bonus has been calculated</li>
+                <li>Full line-item breakdown:
+                  <ul style="padding-left:16px; margin:4px 0;">
+                    <li>₹300 x [N] connections</li>
+                    <li>Performance bonus (tier)</li>
+                    <li>NetBox collections</li>
+                    <li>Carry fee deductions</li>
+                  </ul>
+                </li>
+                <li>Total payout amount</li>
+                <li>If bonus not paid: reason shown explicitly with next steps</li>
+              </ol>
+            </div></div>
+            <div class="detail-section"><div class="detail-label">Suggested Format</div><div class="detail-text">In-app breakdown screen + Push notification.</div></div>
+            <div class="detail-section"><div class="detail-label">Note</div><div class="detail-text">Itemisation is non-negotiable. Lump sum = immediate PTL calls.</div></div>
           </div>
           <div>
             <div class="detail-label">App View</div>
@@ -865,7 +1009,7 @@
       </div>
     </div>
 
-    <!-- MSG 13 — Performance Tips (trigger-based) -->
+    <!-- MSG 13 — Performance Tips (Ongoing) -->
     <div class="msg-card phase-post" data-phase="post" data-trigger="true">
       <div class="msg-card-top" onclick="toggleCard(this)">
         <div class="msg-num">13</div>
@@ -883,15 +1027,18 @@
       <div class="msg-detail">
         <div class="detail-grid">
           <div>
-            <div class="detail-section"><div class="detail-label">Intent</div><div class="detail-text">Educate partner on what helps/hurts their score — but only when they need it. Without a trigger, the information has no context and no impact.</div></div>
-            <div class="trigger-box">
-              <strong>Trigger-Based, Not Calendar-Based</strong>
-              <p><strong>Score drops:</strong> "Your score dropped — here's what's hurting it" with specific actions tied to their data.<br><br>
-              <strong>Performing well:</strong> "Great job — keep this up" with reinforcement of what's working.<br><br>
-              <strong>After first bonus:</strong> If below expectation, show improvement tips tied to the specific reason.<br><br>
-              <strong>Before enforcement (May 1):</strong> For at-risk partners, actionable tips on compliance screen.<br><br>
-              <strong>First week active:</strong> If partner completes quiz in Msg 04, they've shown learning intent — a gentle "here's what to watch" tip is contextual.</p>
-            </div>
+            <div class="detail-section"><div class="detail-label">Intent</div><div class="detail-text">Educate on what helps/hurts score — but only when partner actually needs it.</div></div>
+            <div class="detail-section"><div class="detail-label">Trigger</div><div class="detail-text">Score changes (drops or improvements), post-bonus if below expectation, before enforcement for at-risk.</div></div>
+            <div class="detail-section"><div class="detail-label">Content</div><div class="detail-text">
+              Context-specific tips tied to partner's data, e.g.:
+              <ul style="padding-left:18px; margin:4px 0 0;">
+                <li>"2 idle devices — install them"</li>
+                <li>"1 open issue — resolve it"</li>
+                <li>"Connections stable — keep it up"</li>
+              </ul>
+            </div></div>
+            <div class="detail-section"><div class="detail-label">Suggested Format</div><div class="detail-text">In-app contextual cards.</div></div>
+            <div class="detail-section"><div class="detail-label">Note</div><div class="detail-text">NOT a one-time calendar card. Wiom Paathshala has full DOs/DON'Ts permanently.</div></div>
             <div class="paathshala-box"><strong>Wiom Paathshala</strong><p>Full DOs/DON'Ts, performance tips, and improvement guides permanently in Wiom Paathshala for self-serve.</p></div>
           </div>
           <div>
