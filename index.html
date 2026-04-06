@@ -40,7 +40,9 @@
   .dc-h{display:flex;align-items:center;gap:12px;padding:14px 18px;border-bottom:1px solid #f0f0f0;cursor:pointer}
   .dc-num{width:40px;height:40px;border-radius:10px;display:flex;flex-direction:column;align-items:center;justify-content:center;color:#fff;font-weight:700;flex-shrink:0;font-size:16px}
   .dc-info h4{font-size:14px;font-weight:700;color:#1a1a1a;margin:0}.dc-info .sub{font-size:11px;color:#888;margin-top:2px}
-  .dc-arrow{margin-left:auto;color:#ccc;font-size:16px;transition:transform .2s}
+  .dc-status{margin-left:auto;padding:3px 10px;border-radius:12px;font-size:10px;font-weight:700;flex-shrink:0}
+  .dc-live{background:#E8F5E9;color:#2E7D32}.dc-next{background:#FFF3E0;color:#E65100}.dc-pending{background:#F5F5F5;color:#999}
+  .dc-arrow{margin-left:8px;color:#ccc;font-size:16px;transition:transform .2s}
   .dc.open .dc-arrow{transform:rotate(180deg)}
   .dc-body{display:none;padding:16px 18px;background:#FAFAFA;font-size:13px;line-height:1.7;color:#444}
   .dc.open .dc-body{display:block}
@@ -95,8 +97,8 @@
 
   <h2>Timeline at a Glance</h2>
   <div class="tl-strip">
-    <div class="tl-day tl-ctx"><div class="d">Day 1</div><div class="dt">05/04</div><div class="w">Contextual popups<br>Wallet + Tickets</div></div>
-    <div class="tl-day tl-blk"><div class="d">Day 2</div><div class="dt">06/04</div><div class="w">BLOCKER<br>Video (2:10)</div></div>
+    <div class="tl-day tl-ctx"><div class="d">Day 1 &#x2705;</div><div class="dt">05/04</div><div class="w">Contextual popups<br>Wallet + Tickets</div></div>
+    <div class="tl-day tl-blk"><div class="d">Day 2 &#x1F680;</div><div class="dt">06/04</div><div class="w">BLOCKER<br>Video (2:10)</div></div>
     <div class="tl-day tl-ctx"><div class="d">Day 3</div><div class="dt">07/04</div><div class="w">WA push<br>Non-completers</div></div>
     <div class="tl-day tl-ctx"><div class="d">Day 4</div><div class="dt">08/04</div><div class="w">Recap + Quiz<br>5 questions</div></div>
     <div class="tl-day tl-pre"><div class="d">Day 5</div><div class="dt">09/04</div><div class="w">App transition<br>+ Hard lock</div></div>
@@ -150,6 +152,7 @@
     <div class="dc-h" onclick="this.parentElement.classList.toggle('open')">
       <div class="dc-num" style="background:#E65100">1</div>
       <div class="dc-info"><h4>Day 1 (05/04) — Contextual Popups</h4><div class="sub">Wallet + Tickets। Dismissable ✕। No WA।</div></div>
+      <div class="dc-status dc-live">&#x2705; DEPLOYED</div>
       <div class="dc-arrow">&#9662;</div>
     </div>
     <div class="dc-body">
@@ -179,6 +182,7 @@
     <div class="dc-h" onclick="this.parentElement.classList.toggle('open')">
       <div class="dc-num" style="background:#D9008D">2</div>
       <div class="dc-info"><h4>Day 2 (06/04) — BLOCKER Video</h4><div class="sub">Homepage पर। छोड़ नहीं सकते। "समझ गया" तक locked।</div></div>
+      <div class="dc-status dc-next">&#x1F680; DEPLOYING TODAY</div>
       <div class="dc-arrow">&#9662;</div>
     </div>
     <div class="dc-body">
@@ -229,6 +233,7 @@
     <div class="dc-h" onclick="this.parentElement.classList.toggle('open')">
       <div class="dc-num" style="background:#E65100">3</div>
       <div class="dc-info"><h4>Day 3 (07/04) — WA Push (Non-Completers)</h4><div class="sub">Blocker नहीं किया → WA redirect। Completers → nothing।</div></div>
+      <div class="dc-status dc-pending">UPCOMING</div>
       <div class="dc-arrow">&#9662;</div>
     </div>
     <div class="dc-body">
@@ -245,6 +250,7 @@
     <div class="dc-h" onclick="this.parentElement.classList.toggle('open')">
       <div class="dc-num" style="background:#6A1B9A">4</div>
       <div class="dc-info"><h4>Day 4 (08/04) — Recap + Quiz (5 सवाल)</h4><div class="sub">S2+: sharp recap (45 sec) → quiz। S0/S1: blocker fires।</div></div>
+      <div class="dc-status dc-pending">UPCOMING</div>
       <div class="dc-arrow">&#9662;</div>
     </div>
     <div class="dc-body">
@@ -273,6 +279,7 @@
     <div class="dc-h" onclick="this.parentElement.classList.toggle('open')">
       <div class="dc-num" style="background:#C62828">5</div>
       <div class="dc-info"><h4>Day 5 (09/04) — App Transition + Hard Lock</h4><div class="sub">S2+: download। S0/S1: APP LOCKED।</div></div>
+      <div class="dc-status dc-pending">UPCOMING</div>
       <div class="dc-arrow">&#9662;</div>
     </div>
     <div class="dc-body">
