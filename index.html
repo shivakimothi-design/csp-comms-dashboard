@@ -391,10 +391,26 @@
     <p>PTL is the only real-time signal of whether education is working. Every call is a data point.</p>
     <table class="tbl" style="margin-top:8px">
       <tr><th>Step</th><th>What</th><th>Who</th></tr>
-      <tr><td><strong>Tag every call</strong></td><td>PTL agent tags each call with category: <strong>कमाई</strong> | <strong>Timeline</strong> | <strong>NetBox</strong> | <strong>काम/System</strong> | <strong>App</strong> | <strong>Other</strong></td><td>PTL agent</td></tr>
+      <tr><td><strong>Tag every call</strong></td><td>PTL agent tags each call with one category (defined below)</td><td>PTL agent</td></tr>
       <tr><td><strong>Daily tally</strong></td><td>End-of-day summary: how many calls per category, total volume, any new question types</td><td>PTL lead</td></tr>
       <tr><td><strong>Flag new patterns</strong></td><td>Any question NOT in the 9-question PTL guide → flagged immediately to Shiva</td><td>PTL lead</td></tr>
     </table>
+  </div>
+
+  <div class="card">
+    <h3 style="margin-top:0">Call Categories — Definitions</h3>
+    <table class="tbl" style="margin-top:8px">
+      <tr><th style="width:120px">Category</th><th>Definition — Tag this when partner asks about</th><th>Example Queries</th></tr>
+      <tr><td><strong>कमाई</strong></td><td>Anything about ₹300, bonus, ₹120, earning structure, "paisa", how much will I earn, bonus eligible or not, old bonus vs new</td><td>"Bonus kam ho jayega?" / "₹300 same rahega?" / "Eligible hoon ya nahi?"</td></tr>
+      <tr><td><strong>Timeline</strong></td><td>Anything about when changes happen, this month or next, dates, "kab se", protection period, scoring start</td><td>"Kab se badlega?" / "Is mahine toh nahi?" / "Scoring kab se?"</td></tr>
+      <tr><td><strong>NetBox</strong></td><td>Anything about devices, ₹50 collection, ₹2 carry fee, 15 days, return process, ₹200 deposit, idle devices</td><td>"₹2 kaise katega?" / "₹50 kab milega?" / "Device wapas kaise karein?"</td></tr>
+      <tr><td><strong>काम / System</strong></td><td>Anything about how connections will come, mandatory install, area change, system assigning work, performance tracking</td><td>"Area badlega?" / "Connections kaise milengi?" / "Manual process band?"</td></tr>
+      <tr><td><strong>Internet Quality</strong></td><td>Anything about what internet quality means, speed targets, uptime, SLA, how quality is measured, what to maintain</td><td>"Quality ka matlab?" / "Speed kitni rakhni hai?" / "Kaise measure hoga?"</td></tr>
+      <tr><td><strong>App / Technical</strong></td><td>Anything about the app itself — popup not showing, video not playing, new app kab aayega, old app kya hoga, technical issues</td><td>"Popup nahi aaya" / "Video nahi chal raha" / "Naya app kab?"</td></tr>
+      <tr><td><strong>PayG</strong></td><td>Anything about customer recharge, monthly plans, daily/weekly plans, ISP recharge, 30-day recharge responsibility</td><td>"Customer ka recharge kaun karega?" / "Monthly plan hai ya nahi?"</td></tr>
+      <tr><td><strong>Other</strong></td><td>Doesn't fit any above. Could be unrelated to migration, personal issues, or completely new topic.</td><td>Anything not fitting above categories. <strong>Flag these immediately.</strong></td></tr>
+    </table>
+    <div class="hl" style="margin-top:10px"><strong>Rule:</strong> If PTL agent is unsure → tag "Other" and note the actual question. Better to over-flag than mis-tag.</div>
   </div>
 
   <div class="card">
