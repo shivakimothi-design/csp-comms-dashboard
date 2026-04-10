@@ -384,73 +384,20 @@
 
 <!-- ============ SIGNALS & MEASUREMENT ============ -->
 <div class="panel" id="p-signals">
-  <h2>PTL Feedback Loop — How We Course Correct</h2>
 
-  <div class="card" style="cursor:pointer" onclick="this.querySelector('.dd-body').style.display=this.querySelector('.dd-body').style.display==='none'?'block':'none';this.querySelector('.dd-arrow').textContent=this.querySelector('.dd-body').style.display==='none'?'&#9662;':'&#9652;'">
-    <div style="display:flex;align-items:center;justify-content:space-between"><h3 style="margin:0">Signal Capture</h3><span class="dd-arrow" style="font-size:16px;color:#999">&#9662;</span></div>
-    <div class="dd-body" style="display:none;margin-top:12px">
-    <p>PTL is the only real-time signal of whether education is working. Every call is a data point.</p>
-    <table class="tbl" style="margin-top:8px">
-      <tr><th>Step</th><th>What</th><th>Who</th></tr>
-      <tr><td><strong>Tag every call</strong></td><td>PTL agent tags each call with one category (defined below)</td><td>PTL agent</td></tr>
-      <tr><td><strong>Daily tally</strong></td><td>End-of-day summary: how many calls per category, total volume, any new question types</td><td>PTL lead</td></tr>
-      <tr><td><strong>Flag new patterns</strong></td><td>Any question NOT in the 9-question PTL guide → flagged immediately to Shiva</td><td>PTL lead</td></tr>
-    </table>
-    </div>
+  <!-- 1. SUMMARY -->
+  <h2>1. Summary — What's Happening</h2>
+  <div class="card">
+    <div contenteditable="true" style="min-height:80px;font-size:13px;line-height:1.7;color:#444;border:1px dashed #ddd;border-radius:8px;padding:12px;background:#fff;">Type today's summary here. E.g., "Day 2: Blocker video live. 68% have completed. PTL volume normal. Top category: कमाई (4 calls). No new patterns."</div>
+    <p style="font-size:10px;color:#aaa;margin-top:6px">Click to type. Update daily. This is the first thing anyone reads.</p>
   </div>
 
-  <div class="card" style="cursor:pointer" onclick="this.querySelector('.dd-body').style.display=this.querySelector('.dd-body').style.display==='none'?'block':'none';this.querySelector('.dd-arrow').textContent=this.querySelector('.dd-body').style.display==='none'?'&#9662;':'&#9652;'">
-    <div style="display:flex;align-items:center;justify-content:space-between"><h3 style="margin:0">Call Categories — Definitions</h3><span class="dd-arrow" style="font-size:16px;color:#999">&#9662;</span></div>
-    <div class="dd-body" style="display:none;margin-top:12px">
-    <table class="tbl" style="margin-top:8px">
-      <tr><th style="width:120px">Category</th><th>Definition — Tag this when partner asks about</th><th>Example Queries</th></tr>
-      <tr><td><strong>कमाई</strong></td><td>Anything about ₹300, bonus, ₹120, earning structure, "paisa", how much will I earn, bonus eligible or not, old bonus vs new</td><td>"Bonus kam ho jayega?" / "₹300 same rahega?" / "Eligible hoon ya nahi?"</td></tr>
-      <tr><td><strong>Timeline</strong></td><td>Anything about when changes happen, this month or next, dates, "kab se", protection period, scoring start</td><td>"Kab se badlega?" / "Is mahine toh nahi?" / "Scoring kab se?"</td></tr>
-      <tr><td><strong>NetBox</strong></td><td>Anything about devices, ₹50 collection, ₹2 carry fee, 15 days, return process, ₹200 deposit, idle devices</td><td>"₹2 kaise katega?" / "₹50 kab milega?" / "Device wapas kaise karein?"</td></tr>
-      <tr><td><strong>काम / System</strong></td><td>Anything about how connections will come, mandatory install, area change, system assigning work, performance tracking</td><td>"Area badlega?" / "Connections kaise milengi?" / "Manual process band?"</td></tr>
-      <tr><td><strong>Internet Quality</strong></td><td>Anything about what internet quality means, speed targets, uptime, SLA, how quality is measured, what to maintain</td><td>"Quality ka matlab?" / "Speed kitni rakhni hai?" / "Kaise measure hoga?"</td></tr>
-      <tr><td><strong>App / Technical</strong></td><td>Anything about the app itself — popup not showing, video not playing, new app kab aayega, old app kya hoga, technical issues</td><td>"Popup nahi aaya" / "Video nahi chal raha" / "Naya app kab?"</td></tr>
-      <tr><td><strong>PayG</strong></td><td>Anything about customer recharge, monthly plans, daily/weekly plans, ISP recharge, 30-day recharge responsibility</td><td>"Customer ka recharge kaun karega?" / "Monthly plan hai ya nahi?"</td></tr>
-      <tr><td><strong>Other</strong></td><td>Doesn't fit any above. Could be unrelated to migration, personal issues, or completely new topic.</td><td>Anything not fitting above categories. <strong>Flag these immediately.</strong></td></tr>
-    </table>
-    <div class="hl" style="margin-top:10px"><strong>Rule:</strong> If PTL agent is unsure → tag "Other" and note the actual question. Better to over-flag than mis-tag.</div>
-    </div>
-  </div>
-
-  <div class="card" style="cursor:pointer" onclick="this.querySelector('.dd-body').style.display=this.querySelector('.dd-body').style.display==='none'?'block':'none';this.querySelector('.dd-arrow').textContent=this.querySelector('.dd-body').style.display==='none'?'&#9662;':'&#9652;'">
-    <div style="display:flex;align-items:center;justify-content:space-between"><h3 style="margin:0">Course Correction Rules</h3><span class="dd-arrow" style="font-size:16px;color:#999">&#9662;</span></div>
-    <div class="dd-body" style="display:none;margin-top:12px">
-    <table class="tbl" style="margin-top:0">
-      <tr><th>Signal</th><th>What It Means</th><th>Action</th></tr>
-      <tr><td style="background:#FFEBEE"><strong>>20% calls on same topic</strong></td><td>That topic's education failed — partners didn't understand</td><td>Immediate: add a targeted popup or WA addressing that specific confusion. Update PTL guide.</td></tr>
-      <tr><td style="background:#FFF3E0"><strong>New question pattern</strong></td><td>Something we didn't anticipate — an edge case or misunderstanding</td><td>Add to PTL guide immediately. If pattern persists next day, consider app popup.</td></tr>
-      <tr><td style="background:#FFF3E0"><strong>Partner sentiment: anxious/upset</strong></td><td>Fear about income or change</td><td>Check: did they see the protection message in the video? If not → WA with "इस महीने कुछ नहीं बदला" reassurance.</td></tr>
-      <tr><td style="background:#E8F5E9"><strong>PTL volume declining daily</strong></td><td>Education is working — fewer confused partners</td><td>Stay the course. No action needed.</td></tr>
-      <tr><td style="background:#FFEBEE"><strong>PTL volume spiking</strong></td><td>Something broke or was unclear</td><td>Identify top call category → emergency popup or WA targeting that topic.</td></tr>
-    </table>
-    </div>
-  </div>
-
-  <div class="card" style="cursor:pointer" onclick="this.querySelector('.dd-body').style.display=this.querySelector('.dd-body').style.display==='none'?'block':'none';this.querySelector('.dd-arrow').textContent=this.querySelector('.dd-body').style.display==='none'?'&#9662;':'&#9652;'">
-    <div style="display:flex;align-items:center;justify-content:space-between"><h3 style="margin:0">Edge Cases</h3><span class="dd-arrow" style="font-size:16px;color:#999">&#9662;</span></div>
-    <div class="dd-body" style="display:none;margin-top:12px">
-    <table class="tbl" style="margin-top:0">
-      <tr><th>Edge Case</th><th>Response</th></tr>
-      <tr><td>Partner didn't see popup (old app version, technical issue)</td><td>WA redirect: "App update करें और खोलें।" Blocker will fire on open.</td></tr>
-      <tr><td>Partner saw video but didn't understand</td><td>Quiz will catch gaps (Day 4). Recap video available. If still confused → PTL uses guide responses.</td></tr>
-      <tr><td>Partner asking about enforcement dates, new app details (not yet communicated)</td><td>"पूरी जानकारी जल्द मिलेगी।" Don't front-run the plan. Stick to what's been communicated.</td></tr>
-      <tr><td>Partner shares misinformation with other partners</td><td>If a wrong narrative is spreading → targeted WA to all with correct facts. Use same neutral tone.</td></tr>
-      <tr><td>Partner refuses to watch video / taps through</td><td>Quiz (Day 4) is the safety net. If quiz fails repeatedly → PTL outbound call to explain.</td></tr>
-    </table>
-    </div>
-  </div>
-
-  <h2>Live Results</h2>
+  <!-- 2. LIVE DATA -->
+  <h2>2. Live Data</h2>
 
   <div class="card">
-    <h3 style="margin-top:0">Leading Metrics — Metabase Dashboard</h3>
-    <p style="font-size:12.5px;color:#444;margin-bottom:10px">Contextual popup seen, blocker completed, recap watched, quiz passed — all from CleverTap via Metabase.</p>
-    <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px">
+    <h3 style="margin-top:0">Metabase Dashboards</h3>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:8px">
       <a href="https://metabase.wiom.in/question/10853-csp-admin-contextual-comms" target="_blank" style="display:block;background:#D9008D;color:#fff;text-align:center;padding:14px;border-radius:10px;font-weight:700;font-size:13px;text-decoration:none;">Contextual Comms &#x2197;</a>
       <a href="https://metabase.wiom.in/question/10856-distribution-of-video-watch" target="_blank" style="display:block;background:#6A1B9A;color:#fff;text-align:center;padding:14px;border-radius:10px;font-weight:700;font-size:13px;text-decoration:none;">Video Watch Funnel &#x2197;</a>
     </div>
@@ -462,11 +409,11 @@
 
   <div class="card">
     <h3 style="margin-top:0">PTL Call Log</h3>
-    <p style="font-size:12px;color:#888;margin-bottom:8px">Daily notes from PTL. Edit directly below.</p>
+    <p style="font-size:11px;color:#888;margin-bottom:6px">Click cells to type. Categories: कमाई | Timeline | NetBox | काम | Internet Quality | App | PayG | Other</p>
     <div style="overflow-x:auto">
     <table class="tbl" style="margin-top:0">
-      <tr><th style="width:70px">Day</th><th style="width:70px">Volume</th><th>Top Category</th><th>New Patterns / Notes</th></tr>
-      <tr><td>05/04</td><td contenteditable="true" style="background:#fff;border:1px solid #e0e0e0;min-width:60px"></td><td contenteditable="true" style="background:#fff;border:1px solid #e0e0e0"></td><td contenteditable="true" style="background:#fff;border:1px solid #e0e0e0"></td></tr>
+      <tr><th style="width:60px">Day</th><th style="width:60px">Volume</th><th>Top Category</th><th>Notes</th></tr>
+      <tr><td>05/04</td><td contenteditable="true" style="background:#fff;border:1px solid #e0e0e0"></td><td contenteditable="true" style="background:#fff;border:1px solid #e0e0e0"></td><td contenteditable="true" style="background:#fff;border:1px solid #e0e0e0"></td></tr>
       <tr><td>06/04</td><td contenteditable="true" style="background:#fff;border:1px solid #e0e0e0"></td><td contenteditable="true" style="background:#fff;border:1px solid #e0e0e0"></td><td contenteditable="true" style="background:#fff;border:1px solid #e0e0e0"></td></tr>
       <tr><td>07/04</td><td contenteditable="true" style="background:#fff;border:1px solid #e0e0e0"></td><td contenteditable="true" style="background:#fff;border:1px solid #e0e0e0"></td><td contenteditable="true" style="background:#fff;border:1px solid #e0e0e0"></td></tr>
       <tr><td>08/04</td><td contenteditable="true" style="background:#fff;border:1px solid #e0e0e0"></td><td contenteditable="true" style="background:#fff;border:1px solid #e0e0e0"></td><td contenteditable="true" style="background:#fff;border:1px solid #e0e0e0"></td></tr>
@@ -474,26 +421,36 @@
       <tr><td>10/04+</td><td contenteditable="true" style="background:#fff;border:1px solid #e0e0e0"></td><td contenteditable="true" style="background:#fff;border:1px solid #e0e0e0"></td><td contenteditable="true" style="background:#fff;border:1px solid #e0e0e0"></td></tr>
     </table>
     </div>
-    <p style="font-size:10px;color:#aaa;margin-top:6px">Click any cell to type. Note: this is local only — does not save across sessions.</p>
   </div>
 
   <div class="card">
-    <h3 style="margin-top:0">Recall Survey Results (10/04)</h3>
-    <p style="font-size:12px;color:#888;margin-bottom:8px">Fill after survey calls are done.</p>
+    <h3 style="margin-top:0">Survey Results (10/04)</h3>
+    <p style="font-size:11px;color:#888;margin-bottom:6px">3 cohorts x 5 questions. Click to fill.</p>
     <table class="tbl" style="margin-top:0">
-      <tr><th>Cohort</th><th style="width:60px">Sample</th><th>Q1: पता है?</th><th>Q2: बोनस?</th><th>Q3: NetBox?</th><th>Q4: Connections?</th><th>Q5: इस महीने?</th></tr>
-      <tr><td><strong>A: Quiz पास</strong></td><td contenteditable="true" style="background:#fff;border:1px solid #e0e0e0"></td><td contenteditable="true" style="background:#fff;border:1px solid #e0e0e0"></td><td contenteditable="true" style="background:#fff;border:1px solid #e0e0e0"></td><td contenteditable="true" style="background:#fff;border:1px solid #e0e0e0"></td><td contenteditable="true" style="background:#fff;border:1px solid #e0e0e0"></td><td contenteditable="true" style="background:#fff;border:1px solid #e0e0e0"></td></tr>
-      <tr><td><strong>B: Video only</strong></td><td contenteditable="true" style="background:#fff;border:1px solid #e0e0e0"></td><td contenteditable="true" style="background:#fff;border:1px solid #e0e0e0"></td><td contenteditable="true" style="background:#fff;border:1px solid #e0e0e0"></td><td contenteditable="true" style="background:#fff;border:1px solid #e0e0e0"></td><td contenteditable="true" style="background:#fff;border:1px solid #e0e0e0"></td><td contenteditable="true" style="background:#fff;border:1px solid #e0e0e0"></td></tr>
-      <tr><td><strong>C: Popup only</strong></td><td contenteditable="true" style="background:#fff;border:1px solid #e0e0e0"></td><td contenteditable="true" style="background:#fff;border:1px solid #e0e0e0"></td><td contenteditable="true" style="background:#fff;border:1px solid #e0e0e0"></td><td contenteditable="true" style="background:#fff;border:1px solid #e0e0e0"></td><td contenteditable="true" style="background:#fff;border:1px solid #e0e0e0"></td><td contenteditable="true" style="background:#fff;border:1px solid #e0e0e0"></td></tr>
+      <tr><th>Cohort</th><th>Q1: पता?</th><th>Q2: बोनस?</th><th>Q3: NetBox?</th><th>Q4: Connections?</th><th>Q5: इस महीने?</th></tr>
+      <tr><td><strong>A: Quiz पास</strong></td><td contenteditable="true" style="background:#fff;border:1px solid #e0e0e0"></td><td contenteditable="true" style="background:#fff;border:1px solid #e0e0e0"></td><td contenteditable="true" style="background:#fff;border:1px solid #e0e0e0"></td><td contenteditable="true" style="background:#fff;border:1px solid #e0e0e0"></td><td contenteditable="true" style="background:#fff;border:1px solid #e0e0e0"></td></tr>
+      <tr><td><strong>B: Video only</strong></td><td contenteditable="true" style="background:#fff;border:1px solid #e0e0e0"></td><td contenteditable="true" style="background:#fff;border:1px solid #e0e0e0"></td><td contenteditable="true" style="background:#fff;border:1px solid #e0e0e0"></td><td contenteditable="true" style="background:#fff;border:1px solid #e0e0e0"></td><td contenteditable="true" style="background:#fff;border:1px solid #e0e0e0"></td></tr>
+      <tr><td><strong>C: Popup only</strong></td><td contenteditable="true" style="background:#fff;border:1px solid #e0e0e0"></td><td contenteditable="true" style="background:#fff;border:1px solid #e0e0e0"></td><td contenteditable="true" style="background:#fff;border:1px solid #e0e0e0"></td><td contenteditable="true" style="background:#fff;border:1px solid #e0e0e0"></td><td contenteditable="true" style="background:#fff;border:1px solid #e0e0e0"></td></tr>
     </table>
-    <p style="font-size:10px;color:#aaa;margin-top:6px">Click any cell to type results. E.g., "14/15 knew" or "8/15 mentioned ₹120".</p>
+  </div>
+
+  <!-- 3. SUCCESS -->
+  <h2>3. What is Success & How We Measure</h2>
+
+  <div class="card">
+    <h3 style="margin-top:0">Success = 3 things</h3>
+    <table class="tbl" style="margin-top:8px">
+      <tr><th style="width:40px">#</th><th>Metric</th><th>Target</th><th>How we track</th></tr>
+      <tr><td><strong>1</strong></td><td>Partners ने video देखा + "समझ गया" किया</td><td><strong>100%</strong> by Day 5 (~1,400)</td><td>Metabase — Contextual Comms dashboard</td></tr>
+      <tr><td><strong>2</strong></td><td>Quiz पास किया</td><td><strong>>70%</strong> of those who attempted</td><td>Metabase — Contextual Comms dashboard</td></tr>
+      <tr><td><strong>3</strong></td><td>PTL calls spike नहीं हुआ</td><td>Baseline जैसा या कम</td><td>PTL Call Log (above)</td></tr>
+    </table>
   </div>
 
   <div class="card">
-    <h3 style="margin-top:0">Daily Status & Notes</h3>
-    <p style="font-size:12px;color:#888;margin-bottom:8px">Overall status per day. Type observations, decisions, and actions taken.</p>
-    <table class="tbl" style="margin-top:0">
-      <tr><th style="width:70px">Day</th><th style="width:80px">Status</th><th>Notes / Actions Taken</th></tr>
+    <h3 style="margin-top:0">Daily Status</h3>
+    <table class="tbl" style="margin-top:8px">
+      <tr><th style="width:60px">Day</th><th style="width:80px">Status</th><th>Notes / Actions</th></tr>
       <tr><td>05/04</td><td contenteditable="true" style="background:#fff;border:1px solid #e0e0e0;font-weight:700"></td><td contenteditable="true" style="background:#fff;border:1px solid #e0e0e0"></td></tr>
       <tr><td>06/04</td><td contenteditable="true" style="background:#fff;border:1px solid #e0e0e0;font-weight:700"></td><td contenteditable="true" style="background:#fff;border:1px solid #e0e0e0"></td></tr>
       <tr><td>07/04</td><td contenteditable="true" style="background:#fff;border:1px solid #e0e0e0;font-weight:700"></td><td contenteditable="true" style="background:#fff;border:1px solid #e0e0e0"></td></tr>
@@ -501,109 +458,55 @@
       <tr><td>09/04</td><td contenteditable="true" style="background:#fff;border:1px solid #e0e0e0;font-weight:700"></td><td contenteditable="true" style="background:#fff;border:1px solid #e0e0e0"></td></tr>
       <tr><td>10/04+</td><td contenteditable="true" style="background:#fff;border:1px solid #e0e0e0;font-weight:700"></td><td contenteditable="true" style="background:#fff;border:1px solid #e0e0e0"></td></tr>
     </table>
-    <p style="font-size:10px;color:#aaa;margin-top:6px">Status: type GREEN / YELLOW / RED. Notes: what happened, what you did about it.</p>
-  </div>
-
-  <h2>Measurement — What Success Looks Like</h2>
-
-  <div class="card" style="cursor:pointer" onclick="this.querySelector('.dd-body').style.display=this.querySelector('.dd-body').style.display==='none'?'block':'none';this.querySelector('.dd-arrow').textContent=this.querySelector('.dd-body').style.display==='none'?'&#9662;':'&#9652;'">
-    <div style="display:flex;align-items:center;justify-content:space-between"><h3 style="margin:0">Daily Metrics Tracker</h3><span class="dd-arrow" style="font-size:16px;color:#999">&#9662;</span></div>
-    <div class="dd-body" style="display:none;margin-top:12px">
-    <p style="font-size:12px;color:#888;margin-bottom:8px">Fill daily from CleverTap + PTL tally. Green/Yellow/Red status drives action.</p>
-    <div style="overflow-x:auto">
-    <table class="tbl" style="margin-top:0">
-      <tr><th>Metric</th><th>Day 1<br><span style="font-weight:400;font-size:10px">05/04</span></th><th>Day 2<br><span style="font-weight:400;font-size:10px">06/04</span></th><th>Day 3<br><span style="font-weight:400;font-size:10px">07/04</span></th><th>Day 4<br><span style="font-weight:400;font-size:10px">08/04</span></th><th>Day 5<br><span style="font-weight:400;font-size:10px">09/04</span></th><th>Target</th></tr>
-      <tr><td>Contextual popup seen (%)</td><td></td><td></td><td></td><td></td><td></td><td><strong>>80%</strong> by Day 2</td></tr>
-      <tr><td>Blocker completed (%)</td><td>—</td><td></td><td></td><td></td><td></td><td><strong>100%</strong> by Day 5</td></tr>
-      <tr><td>Recap watched (%)</td><td>—</td><td>—</td><td>—</td><td></td><td></td><td>>70%</td></tr>
-      <tr><td>Quiz passed (%)</td><td>—</td><td>—</td><td>—</td><td></td><td></td><td><strong>>70%</strong></td></tr>
-      <tr><td>PTL call volume</td><td></td><td></td><td></td><td></td><td></td><td>No spike vs baseline</td></tr>
-      <tr><td>Top PTL category</td><td></td><td></td><td></td><td></td><td></td><td>Declining daily</td></tr>
-    </table>
-    </div>
-    </div>
+    <p style="font-size:10px;color:#aaa;margin-top:6px">Status: GREEN / YELLOW / RED</p>
   </div>
 
   <div class="card" style="cursor:pointer" onclick="this.querySelector('.dd-body').style.display=this.querySelector('.dd-body').style.display==='none'?'block':'none';this.querySelector('.dd-arrow').textContent=this.querySelector('.dd-body').style.display==='none'?'&#9662;':'&#9652;'">
-    <div style="display:flex;align-items:center;justify-content:space-between"><h3 style="margin:0">Success Definition</h3><span class="dd-arrow" style="font-size:16px;color:#999">&#9662;</span></div>
+    <div style="display:flex;align-items:center;justify-content:space-between"><h3 style="margin:0">Reference: GREEN / YELLOW / RED definitions</h3><span class="dd-arrow" style="font-size:16px;color:#999">&#9662;</span></div>
     <div class="dd-body" style="display:none;margin-top:12px">
     <table class="tbl" style="margin-top:0">
-      <tr><th style="width:80px">Status</th><th>Blocker</th><th>Quiz</th><th>PTL</th><th>Action</th></tr>
-      <tr style="background:#E8F5E9"><td><strong style="color:#2E7D32">GREEN</strong></td><td>~1,400 में से >1,260 ने video देखा + "समझ गया" किया (>90%)</td><td>जिन्होंने quiz दिया उनमें >70% pass</td><td>Baseline जैसा या कम</td><td>Plan काम कर रहा है। Continue।</td></tr>
-      <tr style="background:#FFF3E0"><td><strong style="color:#E65100">YELLOW</strong></td><td>~980-1,260 ने video complete किया (70-90%)</td><td>50-70% quiz pass</td><td>थोड़ा बढ़ा, manageable</td><td>Day 3 WA push harder। Weak topic पर targeted popup।</td></tr>
-      <tr style="background:#FFEBEE"><td><strong style="color:#C62828">RED</strong></td><td><980 ने video complete किया (<70%)</td><td><50% quiz pass</td><td>Baseline से 2x ज़्यादा</td><td><strong>Emergency:</strong> Top confusion topic identify करो → सबको WA। Day 5 lock postpone consider करो।</td></tr>
+      <tr><th style="width:70px">Status</th><th>Video Complete</th><th>Quiz</th><th>PTL</th></tr>
+      <tr style="background:#E8F5E9"><td><strong style="color:#2E7D32">GREEN</strong></td><td>>90% (~1,260+)</td><td>>70% pass</td><td>Flat/declining</td></tr>
+      <tr style="background:#FFF3E0"><td><strong style="color:#E65100">YELLOW</strong></td><td>70-90% (~980-1,260)</td><td>50-70%</td><td>Slight increase</td></tr>
+      <tr style="background:#FFEBEE"><td><strong style="color:#C62828">RED</strong></td><td>&lt;70% (&lt;980)</td><td>&lt;50%</td><td>>2x baseline</td></tr>
     </table>
     </div>
   </div>
 
   <div class="card" style="cursor:pointer" onclick="this.querySelector('.dd-body').style.display=this.querySelector('.dd-body').style.display==='none'?'block':'none';this.querySelector('.dd-arrow').textContent=this.querySelector('.dd-body').style.display==='none'?'&#9662;':'&#9652;'">
-    <div style="display:flex;align-items:center;justify-content:space-between"><h3 style="margin:0">What We're Ultimately Measuring</h3><span class="dd-arrow" style="font-size:16px;color:#999">&#9662;</span></div>
+    <div style="display:flex;align-items:center;justify-content:space-between"><h3 style="margin:0">Reference: PTL Categories, Course Correction, Edge Cases</h3><span class="dd-arrow" style="font-size:16px;color:#999">&#9662;</span></div>
     <div class="dd-body" style="display:none;margin-top:12px">
-    <div class="hl-pink" style="margin-top:0">
-      <strong>Leading indicators (Days 1-5):</strong> Did they see it? Did they complete it? Did they pass the quiz?<br>
-      → Contextual seen %, Blocker %, Quiz %<br><br>
-      <strong>Lagging indicator (Post-launch):</strong> Did they understand it?<br>
-      → PTL call volume in week 1. If education worked, partners self-serve from the app. If it failed, they call.<br><br>
-      <strong>The real test:</strong> When a partner sees their first bonus breakdown in the new app, do they understand it — or do they call PTL asking "yeh kya hai?"
-    </div>
-    </div>
-  </div>
-
-  <div class="card" style="cursor:pointer" onclick="this.querySelector('.dd-body').style.display=this.querySelector('.dd-body').style.display==='none'?'block':'none';this.querySelector('.dd-arrow').textContent=this.querySelector('.dd-body').style.display==='none'?'&#9662;':'&#9652;'">
-    <div style="display:flex;align-items:center;justify-content:space-between"><h3 style="margin:0">Recall Survey — 10/04 (Launch Day)</h3><span class="dd-arrow" style="font-size:16px;color:#999">&#9662;</span></div>
-    <div class="dd-body" style="display:none;margin-top:12px">
-    <p style="font-size:12.5px;color:#444;line-height:1.7">CleverTap tells us who watched/passed. Survey tells us who actually remembers. Call a random sample on 10th.</p>
-
-    <table class="tbl" style="margin-top:10px">
-      <tr><th style="width:120px">Detail</th><th>Plan</th></tr>
-      <tr><td><strong>When</strong></td><td>10/04 — launch day, before new app goes live</td></tr>
-      <tr><td><strong>How</strong></td><td>PTL outbound calls — short 2-3 min call, 5 simple questions</td></tr>
-      <tr><td><strong>Sample</strong></td><td>3 cohorts, ~15-20 partners each (total ~50-60 calls)</td></tr>
+    <p style="font-size:12px;font-weight:700;margin-bottom:6px">Call Categories</p>
+    <table class="tbl" style="margin-top:0;font-size:12px">
+      <tr><th>Category</th><th>When to tag</th></tr>
+      <tr><td><strong>कमाई</strong></td><td>₹300, bonus, ₹120, earning, eligible</td></tr>
+      <tr><td><strong>Timeline</strong></td><td>कब से, this month, dates, scoring</td></tr>
+      <tr><td><strong>NetBox</strong></td><td>₹50, ₹2, 15 days, return, ₹200</td></tr>
+      <tr><td><strong>काम / System</strong></td><td>Connections, area, mandatory, system</td></tr>
+      <tr><td><strong>Internet Quality</strong></td><td>Quality meaning, speed, uptime, SLA</td></tr>
+      <tr><td><strong>App / Technical</strong></td><td>Popup, video, new app, old app</td></tr>
+      <tr><td><strong>PayG</strong></td><td>Customer recharge, monthly, ISP</td></tr>
+      <tr><td><strong>Other</strong></td><td>None of above — flag immediately</td></tr>
     </table>
-
-    <h3 style="margin-top:14px">3 Cohorts</h3>
-    <table class="tbl" style="margin-top:8px">
-      <tr><th>Cohort</th><th>Who</th><th>What we're testing</th></tr>
-      <tr><td style="background:#F3E8FF"><strong>A: Quiz पास</strong></td><td>Partners who passed quiz (S4)</td><td>Do they actually remember? Quiz pass ≠ retained knowledge.</td></tr>
-      <tr><td style="background:#FFF9C4"><strong>B: Video only</strong></td><td>Partners who watched video but didn't do quiz (S2)</td><td>How much stuck from just watching?</td></tr>
-      <tr><td style="background:#FFEBEE"><strong>C: Contextual only</strong></td><td>Partners who only saw Day 1 popup (S1)</td><td>Did the popup alone convey anything?</td></tr>
-    </table>
-
-    <h3 style="margin-top:14px">Survey Questions</h3>
-    <div class="card" style="margin-top:8px;background:#F5F5F7">
-      <p><strong>Q1:</strong> Wiom system में कुछ updates आ रहे हैं — आपको पता है? <span style="color:#888;font-size:11px">(awareness)</span></p>
-      <p style="margin-top:8px"><strong>Q2:</strong> बोनस के बारे में क्या बदल रहा है? <span style="color:#888;font-size:11px">(looking for "internet quality")</span></p>
-      <p style="margin-top:8px"><strong>Q3:</strong> NetBox के बारे में कुछ नया सुना? <span style="color:#888;font-size:11px">(looking for "₹50", "15 din", "₹2")</span></p>
-      <p style="margin-top:8px"><strong>Q4:</strong> Connections अब कैसे मिलेंगी? <span style="color:#888;font-size:11px">(looking for "system se")</span></p>
-      <p style="margin-top:8px"><strong>Q5:</strong> इस महीने कुछ बदलेगा या नहीं? <span style="color:#888;font-size:11px">(correct: "नहीं")</span></p>
-    </div>
-
-    <h3 style="margin-top:14px">What Results Tell Us</h3>
-    <table class="tbl" style="margin-top:8px">
-      <tr><th>Finding</th><th>What it means</th><th>Action</th></tr>
-      <tr><td>Cohort A remembers well</td><td>Quiz format works</td><td>No change</td></tr>
-      <tr><td>Cohort A forgot</td><td>Quiz = in-moment, not retention</td><td>New app popup must repeat key points</td></tr>
-      <tr><td>Cohort B remembers some</td><td>Video = awareness, not depth</td><td>Push quiz harder</td></tr>
-      <tr><td>Cohort B forgot</td><td>Passive watching, no retention</td><td>Quiz is non-negotiable</td></tr>
-      <tr><td>Cohort C remembers anything</td><td>Popups planted a seed</td><td>Good — build on it</td></tr>
-      <tr><td>Cohort C forgot</td><td>Popups dismissed</td><td>Confirms: video is the real education</td></tr>
+    <p style="font-size:12px;font-weight:700;margin:14px 0 6px">Course Correction</p>
+    <table class="tbl" style="margin-top:0;font-size:12px">
+      <tr><td style="background:#FFEBEE">>20% calls same topic</td><td>Education failed → targeted popup/WA</td></tr>
+      <tr><td style="background:#FFF3E0">New question pattern</td><td>Add to PTL guide → popup if persists</td></tr>
+      <tr><td style="background:#FFEBEE">PTL spiking</td><td>Find top category → emergency WA</td></tr>
+      <tr><td style="background:#E8F5E9">PTL declining</td><td>Stay the course</td></tr>
     </table>
     </div>
   </div>
 
   <div class="card" style="cursor:pointer" onclick="this.querySelector('.dd-body').style.display=this.querySelector('.dd-body').style.display==='none'?'block':'none';this.querySelector('.dd-arrow').textContent=this.querySelector('.dd-body').style.display==='none'?'&#9662;':'&#9652;'">
-    <div style="display:flex;align-items:center;justify-content:space-between"><h3 style="margin:0">Daily Standup Checklist</h3><span class="dd-arrow" style="font-size:16px;color:#999">&#9662;</span></div>
+    <div style="display:flex;align-items:center;justify-content:space-between"><h3 style="margin:0">Reference: Recall Survey Design</h3><span class="dd-arrow" style="font-size:16px;color:#999">&#9662;</span></div>
     <div class="dd-body" style="display:none;margin-top:12px">
-    <p style="font-size:12.5px;color:#444;line-height:1.7">Every morning, 5 min standup with PTL lead:</p>
-    <ol style="font-size:12.5px;color:#444;line-height:1.8;padding-left:18px">
-      <li>Yesterday's PTL volume — up, down, or flat?</li>
-      <li>Top call category — same as yesterday or shifted?</li>
-      <li>Any new question type we didn't anticipate?</li>
-      <li>CleverTap numbers — blocker/quiz completion %</li>
-      <li>Status: Green / Yellow / Red → action if needed</li>
-    </ol>
+    <p style="font-size:12px;color:#444">10/04, PTL outbound, ~50-60 calls, 3 cohorts (Quiz pass / Video only / Popup only), 5 open-ended questions testing recall.</p>
+    <p style="font-size:12px;color:#444;margin-top:8px"><strong>Questions:</strong> Q1: पता है? Q2: बोनस? Q3: NetBox? Q4: Connections? Q5: इस महीने बदलेगा?</p>
+    <p style="font-size:12px;color:#444;margin-top:8px"><strong>Key insight:</strong> If quiz-passers forgot → quiz tests in-moment, not retention. If video-only forgot → quiz is non-negotiable. If popup-only remembered anything → contextual hooks work.</p>
     </div>
   </div>
+
 </div>
 
 <div style="text-align:center;padding:20px;font-size:11px;color:#999">
